@@ -1,0 +1,202 @@
+AayuHub Medical Knowledge Database
+Project Documentation
+This document describes the purpose, information structure, and operational rules of the AayuHub medical knowledge database. It is a human-readable reference document; database commands and source code have been intentionally omitted.
+1. Overview
+The AayuHub Medical Knowledge Database is designed to support a healthcare information chatbot. It organizes medical departments, example conditions, associated symptoms, department-specific follow-up questions, emergency warning signs, department-routing guidance, and chatbot safety rules. The information can help the chatbot understand a user's reported concern and guide them toward an appropriate speciality or urgent care.
+The database is organized around four specialities: Dermatology, Cardiology, Orthopaedics, and Ophthalmology.
+2. Medical Departments
+3. Medical Conditions and General Descriptions
+Dermatology
+Cardiology
+Orthopaedics
+Ophthalmology
+4. Symptom Reference
+Symptoms are stored as separate items associated with conditions. This supports matching a user's description to relevant entries. The lists below reproduce the symptom labels present in the source material.
+Dermatology
+Acne: pimples, blackheads, whiteheads
+Eczema: dry skin, itching, inflamed skin
+Psoriasis: thick skin patches, scaly skin patches
+Fungal Infection: itching, redness, circular rashes
+Skin Allergy: rashes, swelling, itching
+Hair Loss: excessive hair fall, bald patches
+Dandruff: flaky scalp, itchy scalp
+Skin Infection: redness, pain, swelling, pus
+Warts: small skin growths, rough skin growths
+Nail Infection: discoloured nails, thick nails
+Cardiology
+Hypertension: headache, dizziness
+Heart Attack: chest pain, sweating, nausea, breathlessness
+Arrhythmia: irregular heartbeat, racing heartbeat
+Heart Failure: breathlessness, leg swelling, fatigue
+Angina: chest discomfort, chest discomfort during activity
+Coronary Artery Disease: reduced blood flow to the heart
+Heart Valve Disease: breathlessness, fatigue, chest discomfort
+Palpitations: racing heartbeat, pounding heartbeat, skipping heartbeat
+Orthopaedics
+Fracture: severe pain, swelling, deformity
+Sprain: joint pain, joint swelling
+Arthritis: joint pain, stiffness, joint swelling
+Back Pain: upper back pain, lower back pain
+Neck Pain: neck stiffness, restricted movement
+Knee Problems: knee pain, knee swelling, difficulty walking
+Shoulder Injury: shoulder pain, restricted movement
+Sports Injury: muscle damage, ligament damage, tendon damage
+Slip Disc: back pain, pain spreading into limbs
+Osteoporosis: weak bones, increased fracture risk
+Ophthalmology
+Conjunctivitis: redness, irritation, discharge
+Cataract: blurred vision, cloudy vision
+Glaucoma: eye pressure damage, severe eye pain
+Myopia: difficulty seeing distant objects
+Hyperopia: difficulty seeing nearby objects
+Dry Eyes: burning, itching, irritation
+Eye Infection: redness, pain, discharge
+Refractive Error: blurred vision
+Retinal Problems: flashes, floaters, vision loss
+Stye: painful bump near eyelid
+5. Department-Specific Follow-up Questions
+Dermatology
+Where is the skin problem located?
+How long have you had this problem?
+Is there itching or pain?
+Is there swelling or redness?
+Is the problem spreading?
+Cardiology
+Are you experiencing chest pain?
+Are you having difficulty breathing?
+Have you noticed changes in your heartbeat?
+Do you feel dizzy or faint?
+How long have you had these symptoms?
+Do you have a history of heart disease?
+Orthopaedics
+Which body part is affected?
+Did the problem start after an injury?
+How severe is the pain?
+Is there swelling?
+Can you move the affected body part?
+Can you walk or bear weight?
+Do you experience numbness or tingling?
+Ophthalmology
+Is one eye or both eyes affected?
+Are you experiencing blurred vision?
+Is there eye pain?
+Is there redness or itching?
+Is there any discharge?
+Have you noticed sudden vision changes?
+Have you experienced an eye injury?
+6. Emergency Warning Signs
+The source database lists warning signs that should prompt urgent evaluation rather than routine department guidance. These signs are presented here as recorded in the source.
+Dermatology
+Severe allergic reaction
+Breathing difficulty
+Rapidly spreading infection with fever
+Severe blistering or skin peeling
+Cardiology
+Chest pressure or pain
+Severe breathlessness
+Fainting
+Sweating with chest discomfort
+Pain spreading to the arm or jaw
+Orthopaedics
+Suspected fracture
+Visible deformity
+Severe accident injuries
+New limb weakness
+Back pain with loss of bladder or bowel control
+Ophthalmology
+Sudden vision loss
+Severe eye pain
+Eye injury
+Chemical exposure
+Sudden flashes or many new floaters
+Safety note: If any emergency warning sign is present, the user should seek immediate medical care or contact local emergency services. This document is not a diagnostic tool.
+7. Department Routing Guidance
+Routing is intended to help direct a user to a relevant speciality. It should not be treated as confirmation of a disease or a substitute for clinical assessment.
+8. Chatbot Behaviour and Safety Rules
+Identify symptoms before suggesting a department.
+Ask follow-up questions if the information provided is insufficient.
+Never claim to provide a confirmed medical diagnosis.
+Never prescribe medicines or dosages.
+Check for emergency symptoms before recommending a hospital.
+Direct emergency cases to immediate medical care.
+Recommend hospitals only when the required speciality is listed as available in the hospital database.
+9. Information Relationships
+The database's information is linked conceptually in the following way:
+Each department has a name, code, and description.
+Medical conditions are associated with a department.
+Each condition can have multiple symptom labels.
+Each department can have multiple follow-up questions.
+Each department can have multiple emergency warning signs.
+Routing guidance connects symptom groups to a department.
+Chatbot rules define the safety and interaction behaviour expected of the assistant.
+10. Scope and Limitations
+The documented content covers four specialities only: Dermatology, Cardiology, Orthopaedics, and Ophthalmology.
+Condition descriptions and symptom lists are brief reference labels, not comprehensive clinical criteria.
+Symptoms can overlap across conditions, and a symptom match cannot establish a diagnosis.
+The source material mentions hospital recommendations only when the required speciality is present in a hospital database; hospital records themselves are not detailed in this document.
+The source does not provide treatment protocols, medication guidance, or dosage recommendations, and the chatbot rules explicitly prohibit prescribing medicines or dosages.
+11. Summary
+AayuHub's medical knowledge data is structured to help a chatbot collect symptom information, ask relevant follow-up questions, identify emergency warning signs, and route users toward one of four medical specialities. Its central safeguards are to avoid confirmed diagnoses, avoid prescribing medication, and prioritize immediate care when emergency symptoms are reported.
+
+Department | Code | Scope
+Dermatology | DERMO | Skin, hair, scalp, and nail problems.
+Cardiology | CARDIO | Heart and blood-vessel problems.
+Orthopaedics | ORTHO | Bones, joints, muscles, ligaments, tendons, and spine.
+Ophthalmology | OPHTHALMOLOGY | Eyes, eyesight, and vision-related problems.
+
+
+Condition | Description
+Acne | Pimples, blackheads, and whiteheads.
+Eczema | Dry, itchy, and inflamed skin.
+Psoriasis | Thick, scaly skin patches.
+Fungal Infection | Itching, redness, and circular rashes.
+Skin Allergy | Rashes, swelling, and itching.
+Hair Loss | Excessive hair fall and bald patches.
+Dandruff | Flaky and itchy scalp.
+Skin Infection | Redness, pain, swelling, and pus.
+Warts | Small, rough skin growths.
+Nail Infection | Discoloured and thick nails.
+
+
+Condition | Description
+Hypertension | Often has no symptoms; headache or dizziness may sometimes occur.
+Heart Attack | Chest pain, sweating, nausea, and breathlessness.
+Arrhythmia | Irregular or racing heartbeat.
+Heart Failure | Breathlessness, leg swelling, and fatigue.
+Angina | Chest discomfort, often during activity.
+Coronary Artery Disease | Reduced blood flow to the heart.
+Heart Valve Disease | Breathlessness, fatigue, and chest discomfort.
+Palpitations | Racing, pounding, or skipping heartbeat.
+
+
+Condition | Description
+Fracture | Severe pain, swelling, and deformity.
+Sprain | Joint pain and swelling.
+Arthritis | Joint pain, stiffness, and swelling.
+Back Pain | Upper or lower back pain.
+Neck Pain | Neck stiffness and restricted movement.
+Knee Problems | Knee pain, swelling, and difficulty walking.
+Shoulder Injury | Shoulder pain and restricted movement.
+Sports Injury | Muscle, ligament, or tendon damage.
+Slip Disc | Back pain, sometimes spreading into the limbs.
+Osteoporosis | Weak bones and increased fracture risk.
+
+
+Condition | Description
+Conjunctivitis | Redness, irritation, and discharge.
+Cataract | Blurred or cloudy vision.
+Glaucoma | Eye-pressure damage; sometimes severe eye pain.
+Myopia | Difficulty seeing distant objects.
+Hyperopia | Difficulty seeing nearby objects.
+Dry Eyes | Burning, itching, and irritation.
+Eye Infection | Redness, pain, and discharge.
+Refractive Error | Blurred vision.
+Retinal Problems | Flashes, floaters, and vision loss.
+Stye | Painful bump near the eyelid.
+
+
+Reported symptom group | Suggested department
+Skin rash, acne, itching, hair fall | Dermatology
+Chest pain, palpitations, heart problems | Cardiology
+Bone pain, fracture, joint pain, back pain | Orthopaedics
+Blurred vision, eye redness, eye pain | Ophthalmology

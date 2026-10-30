@@ -1,0 +1,54 @@
+AAYUHUB - HOSPITAL DATABASE
+Plain-language project notes
+
+PURPOSE
+The Hospital Database helps AAYUHUB find and present hospitals that may provide a service relevant to a patient's concern. It stores hospital and service information; it does not decide what condition a patient has.
+
+WHAT THIS DATABASE CONTAINS
+- Hospital names and locations.
+- Hospital contact details.
+- Available specialties, such as Dermatology or Cardiology.
+- Treatments offered by hospitals.
+- Hospital services, including emergency services where recorded.
+- Eligibility requirements that may affect whether a patient can use a service.
+- Availability information indicating whether a specialty or service is confirmed as available.
+
+HOW IT IS USED
+1. The Medical Knowledge Base identifies a department that may be relevant, unless emergency handling takes priority.
+2. AAYUHUB passes the department identifier or code to the hospital-search process.
+3. The Hospital Database checks which hospitals list that specialty or service as available.
+4. AAYUHUB presents matching hospital details, such as name, location, contact number, and confirmed service information.
+
+EXAMPLE
+If a non-emergency skin concern is routed to Dermatology, the Hospital Database can search for hospitals whose Dermatology availability is marked as confirmed. The application can show the matching hospitals to the patient.
+
+EMERGENCY EXAMPLE
+If a patient describes chest pain and difficulty breathing, the Medical Knowledge Base may flag a potential emergency. AAYUHUB should advise the patient to seek emergency medical care immediately and must not delay that advice for routine symptom questions or hospital matching. If appropriate and safe, the application may also help locate hospitals with confirmed Cardiology availability and emergency services.
+
+HOW IT RELATES TO THE MEDICAL KNOWLEDGE BASE
+The Hospital Database answers: "Which hospitals list the relevant department or service as available?"
+The Medical Knowledge Base answers: "What kind of care or department may be relevant based on the concern?"
+The hospital information should not be used by itself to infer or diagnose a patient's condition.
+
+SHARED DEPARTMENT IDENTIFIERS
+The two information sets connect through shared department identifiers or codes. Example codes from the project notes:
+- Dermatology: DERMO
+- Cardiology: CARDIO
+- Ophthalmology: OPHTHALMOLOGY
+- Orthopaedics: ORTHO
+
+PRESENTING RESULTS
+When matching hospitals are available, useful information to show includes:
+- Hospital name.
+- Location.
+- Contact number.
+- The relevant specialty or service.
+- Whether availability has been confirmed.
+- Any recorded eligibility requirements.
+
+IMPORTANT PROJECT NOTES
+- Hospital and service availability can change; confirm how the project will keep this information current.
+- Clearly distinguish recorded availability from a guarantee that a service is available at the time of a patient's visit.
+- Keep hospital details linked to the correct specialties and services.
+- Use the same department identifiers as the Medical Knowledge Base.
+- Emergency advice must not be delayed while searching for or displaying hospitals.
