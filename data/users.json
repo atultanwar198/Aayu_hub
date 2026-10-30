@@ -4,5 +4,11 @@
     "username": "jane.doe",
     "passwordHash": "scrypt$6fa3f83568048930b7e28bc90adff3fa$cc1da83d27bd3ace5e4c6cc5ff48e195df3c930062fb042e55ad7000039d67000a10b35e601302453215a6bc8e02aa3df827613dd96ac570d03df146fea2f72e",
     "patientId": "PAT-2001"
+  },
+  {
+    "id": "AAYU-A2A624F73BC64AD28FC2B7FCB8A55457",
+    "username": "hmmnahh2003@gmail.com",
+    "passwordHash": "scrypt$c6d4fafba71a9f3bc3c9b9a74940287f$a86bf1237dc30fe5f25db586ab4ee5b4be584ea5668b52d7932024fea217de99fbcec0fb1b001ab9f24086ea65e85cd843457f26f04651fc15aa58668fd00741",
+    "patientId": "PAT-A2A624F73BC64AD28FC2B7FCB8A55457"
   }
 ]

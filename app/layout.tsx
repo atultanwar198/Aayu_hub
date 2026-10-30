@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Aayu Hub — Patient Portal",
-  description: "Secure access to your patient information.",
+  description: "Sign in or create an account for the Aayu Hub patient portal.",
 };
 
 export default function RootLayout({

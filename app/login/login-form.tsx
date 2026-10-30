@@ -42,7 +42,7 @@ export default function LoginForm() {
   return (
     <form className="flex flex-col gap-[10px]" onSubmit={handleSubmit}>
       <label className="mt-2 text-[11px] text-[#d1d6d1]" htmlFor="userId">
-        Patient ID or username
+        Patient ID, username, or email
       </label>
       <input
         className="h-12 w-full border border-white/[.14] bg-white/[.035] px-[13px] text-xs text-[#f4f0e8] outline-none placeholder:text-[#737d7a] focus:border-[#d7a66e]"
@@ -50,7 +50,7 @@ export default function LoginForm() {
         name="userId"
         type="text"
         autoComplete="username"
-        placeholder="Enter your patient ID or username"
+        placeholder="Enter your patient ID, username, or email"
         required
       />
       <label className="mt-2 text-[11px] text-[#d1d6d1]" htmlFor="password">

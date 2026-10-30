@@ -1,20 +1,45 @@
-import { createHmac, scrypt, timingSafeEqual } from "node:crypto";
+import {
+  createHmac,
+  randomBytes,
+  randomUUID,
+  scrypt,
+  timingSafeEqual,
+} from "node:crypto";
+import { readFile, writeFile } from "node:fs/promises";
 import { promisify } from "node:util";
+import { join } from "node:path";
 import { cookies } from "next/headers";
-import users from "../data/users.json";
-import patients from "../data/patients.json";
 
 const scryptAsync = promisify(scrypt);
 const SESSION_COOKIE = "aayu_session";
 const SESSION_DURATION_SECONDS = 60 * 60 * 8;
+const USERS_FILE = join(process.cwd(), "data", "users.json");
+const PATIENTS_FILE = join(process.cwd(), "data", "patients.json");
 
-type User = (typeof users)[number];
-export type Patient = (typeof patients)[number];
+export type User = {
+  id: string;
+  username: string;
+  passwordHash: string;
+  patientId: string;
+};
+
+export type Patient = {
+  patientId: string;
+  fullName: string;
+  dateOfBirth: string;
+  bloodType: string;
+  allergies: string[];
+  conditions: string[];
+  medications: { name: string; instructions: string }[];
+  emergencyContact: { name: string; relationship: string; phone: string };
+};
 
 type Session = {
   userId: string;
   expiresAt: number;
 };
+
+let registrationQueue = Promise.resolve();
 
 function getSessionSecret() {
   const secret = process.env.SESSION_SECRET;
@@ -32,7 +57,15 @@ function getSessionSecret() {
   return "local-demo-session-secret-change-before-deployment";
 }
 
-function findUser(userIdOrName: string): User | undefined {
+async function readJsonFile<T>(path: string): Promise<T> {
+  return JSON.parse(await readFile(path, "utf8")) as T;
+}
+
+async function writeJsonFile(path: string, value: unknown) {
+  await writeFile(path, `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
+function findUser(users: User[], userIdOrName: string): User | undefined {
   const normalized = userIdOrName.trim().toLowerCase();
   return users.find(
     (user) =>
@@ -52,12 +85,69 @@ async function verifyPassword(password: string, passwordHash: string) {
   return actual.length === expected.length && timingSafeEqual(actual, expected);
 }
 
+async function hashPassword(password: string) {
+  const salt = randomBytes(16).toString("hex");
+  const hash = (await scryptAsync(password, salt, 64)) as Buffer;
+  return `scrypt$${salt}$${hash.toString("hex")}`;
+}
+
 export async function authenticateUser(userIdOrName: string, password: string) {
-  const user = findUser(userIdOrName);
+  const users = await readJsonFile<User[]>(USERS_FILE);
+  const user = findUser(users, userIdOrName);
   if (!user || !(await verifyPassword(password, user.passwordHash))) {
     return null;
   }
   return user;
+}
+
+export async function registerUser({
+  fullName,
+  email,
+  password,
+}: {
+  fullName: string;
+  email: string;
+  password: string;
+}): Promise<User | null> {
+  const register = async () => {
+    const [users, patients] = await Promise.all([
+      readJsonFile<User[]>(USERS_FILE),
+      readJsonFile<Patient[]>(PATIENTS_FILE),
+    ]);
+    const username = email.trim().toLowerCase();
+    if (users.some((user) => user.username.toLowerCase() === username)) {
+      return null;
+    }
+
+    const identifier = randomUUID().replaceAll("-", "").toUpperCase();
+    const user: User = {
+      id: `AAYU-${identifier}`,
+      username,
+      passwordHash: await hashPassword(password),
+      patientId: `PAT-${identifier}`,
+    };
+    const patient: Patient = {
+      patientId: user.patientId,
+      fullName: fullName.trim(),
+      dateOfBirth: "",
+      bloodType: "Not provided",
+      allergies: [],
+      conditions: [],
+      medications: [],
+      emergencyContact: { name: "", relationship: "", phone: "" },
+    };
+
+    await writeJsonFile(USERS_FILE, [...users, user]);
+    await writeJsonFile(PATIENTS_FILE, [...patients, patient]);
+    return user;
+  };
+
+  const result = registrationQueue.then(register, register);
+  registrationQueue = result.then(
+    () => undefined,
+    () => undefined,
+  );
+  return result;
 }
 
 function signSession(payload: string) {
@@ -116,6 +206,10 @@ export async function getCurrentPatient(): Promise<Patient | null> {
     return null;
   }
 
+  const [users, patients] = await Promise.all([
+    readJsonFile<User[]>(USERS_FILE),
+    readJsonFile<Patient[]>(PATIENTS_FILE),
+  ]);
   const user = users.find((candidate) => candidate.id === session.userId);
   if (!user) return null;
   return patients.find((patient) => patient.patientId === user.patientId) ?? null;

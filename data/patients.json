@@ -4,8 +4,12 @@
     "fullName": "Jane Doe",
     "dateOfBirth": "1988-04-12",
     "bloodType": "O+",
-    "allergies": ["Penicillin"],
-    "conditions": ["Seasonal asthma"],
+    "allergies": [
+      "Penicillin"
+    ],
+    "conditions": [
+      "Seasonal asthma"
+    ],
     "medications": [
       {
         "name": "Salbutamol inhaler",
@@ -16,6 +20,20 @@
       "name": "Alex Doe",
       "relationship": "Sibling",
       "phone": "(555) 010-2001"
+    }
+  },
+  {
+    "patientId": "PAT-A2A624F73BC64AD28FC2B7FCB8A55457",
+    "fullName": "fjd",
+    "dateOfBirth": "",
+    "bloodType": "Not provided",
+    "allergies": [],
+    "conditions": [],
+    "medications": [],
+    "emergencyContact": {
+      "name": "",
+      "relationship": "",
+      "phone": ""
     }
   }
 ]

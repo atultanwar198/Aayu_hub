@@ -1,53 +1,64 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function SignupForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const router = useRouter();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitted(true);
-  }
+    setError("");
+    setLoading(true);
 
-  if (submitted) {
-    return (
-      <div
-        className="mt-[35px] border border-[#e7a85b]/[.35] bg-[#e7a85b]/[.06] p-[25px]"
-        role="status"
-      >
-        <span
-          className="grid size-[34px] place-items-center rounded-full bg-[#e7a85b] text-[#15120d]"
-          aria-hidden="true"
-        >
-          ✓
-        </span>
-        <h2 className="mb-2 mt-5 font-display text-[27px] font-medium">
-          Thanks for reaching out.
-        </h2>
-        <p className="m-0 text-sm text-[#b8bcb8]">
-          We appreciate your interest in Aayu Hub.
-        </p>
-      </div>
-    );
+    const formData = new FormData(event.currentTarget);
+    try {
+      const response = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: formData.get("fullName"),
+          email: formData.get("email"),
+          password: formData.get("password"),
+        }),
+      });
+      const result = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        setError(
+          result.error ?? "Unable to create your account. Please try again.",
+        );
+        return;
+      }
+
+      router.replace("/patients");
+      router.refresh();
+    } catch {
+      setError("Could not reach the server. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-[10px]">
-      <label className="mt-2 text-xs text-[#d2cec5]" htmlFor="name">
+      <label className="mt-2 text-xs text-[#d2cec5]" htmlFor="fullName">
         Your name
       </label>
       <input
         className="h-[50px] border border-white/[.18] bg-white/[.04] px-[14px] text-sm text-[#f4f0e8] outline-none placeholder:text-[#777c7b] focus:border-[#e7a85b]"
-        id="name"
-        name="name"
+        id="fullName"
+        name="fullName"
         type="text"
         placeholder="Alex Morgan"
         autoComplete="name"
+        maxLength={100}
         required
       />
       <label className="mt-2 text-xs text-[#d2cec5]" htmlFor="email">
-        Email address
+        Email address (used to sign in)
       </label>
       <input
         className="h-[50px] border border-white/[.18] bg-white/[.04] px-[14px] text-sm text-[#f4f0e8] outline-none placeholder:text-[#777c7b] focus:border-[#e7a85b]"
@@ -56,19 +67,40 @@ export default function SignupForm() {
         type="email"
         placeholder="you@example.com"
         autoComplete="email"
+        maxLength={254}
         required
       />
+      <label className="mt-2 text-xs text-[#d2cec5]" htmlFor="password">
+        Password
+      </label>
+      <input
+        className="h-[50px] border border-white/[.18] bg-white/[.04] px-[14px] text-sm text-[#f4f0e8] outline-none placeholder:text-[#777c7b] focus:border-[#e7a85b]"
+        id="password"
+        name="password"
+        type="password"
+        placeholder="At least 8 characters"
+        autoComplete="new-password"
+        minLength={8}
+        maxLength={256}
+        required
+      />
+      {error && (
+        <p className="mt-[3px] text-xs text-[#f0a39a]" role="alert">
+          {error}
+        </p>
+      )}
       <button
-        className="mt-4 flex min-h-[52px] w-full items-center justify-between border-0 bg-[#e7a85b] px-[21px] text-[13px] font-semibold text-[#15120d] transition-colors hover:bg-[#f0bd7f]"
+        className="mt-4 flex min-h-[52px] w-full items-center justify-between border-0 bg-[#e7a85b] px-[21px] text-[13px] font-semibold text-[#15120d] transition-colors hover:bg-[#f0bd7f] disabled:cursor-wait disabled:opacity-70"
         type="submit"
+        disabled={loading}
       >
-        Contact me{" "}
+        {loading ? "Creating account..." : "Create account"}{" "}
         <span className="text-lg" aria-hidden="true">
           →
         </span>
       </button>
       <p className="text-[11px] leading-[1.6] text-[#818886]">
-        This demo form does not store or send your information.
+        Demo account details are stored in local JSON files on this server.
       </p>
     </form>
   );

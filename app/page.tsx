@@ -40,7 +40,7 @@ export default function Home() {
           </span>
         </Link>
         <nav
-          className="flex items-center gap-4 text-[11px] text-[#aeb8b3] md:gap-[34px] md:text-xs"
+          className="flex items-center gap-3 text-[11px] text-[#aeb8b3] md:gap-[34px] md:text-xs"
           aria-label="Main navigation"
         >
           <a
@@ -50,13 +50,16 @@ export default function Home() {
             How it works
           </a>
           <Link
-            className="border border-white/20 px-[15px] py-[10px] text-[#e8e5dc] transition-colors hover:border-[#d7a66e]"
+            className="px-[9px] py-[10px] text-[#e8e5dc] transition-colors hover:text-[#e7b77e] md:px-[15px]"
             href="/login"
           >
-            Sign in{" "}
-            <span className="ml-[13px] text-[#d7a66e]" aria-hidden="true">
-              →
-            </span>
+            Log in
+          </Link>
+          <Link
+            className="border border-[#d7a66e] bg-[#dbaa70] px-[12px] py-[10px] text-[#15120d] transition-colors hover:bg-[#efbd82] md:px-[15px]"
+            href="/signup"
+          >
+            Sign up
           </Link>
         </nav>
       </header>
@@ -83,9 +86,9 @@ export default function Home() {
           <div className="mt-[30px] flex flex-col items-start gap-[18px] sm:flex-row sm:items-center sm:gap-[26px]">
             <Link
               className="inline-flex min-h-[49px] items-center justify-between gap-[35px] bg-[#dbaa70] px-[17px] text-xs font-semibold text-[#15120d] transition-colors hover:bg-[#efbd82]"
-              href="/login"
+              href="/signup"
             >
-              Get started{" "}
+              Create an account{" "}
               <span className="text-[17px]" aria-hidden="true">
                 →
               </span>

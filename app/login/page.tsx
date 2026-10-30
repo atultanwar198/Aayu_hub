@@ -76,9 +76,18 @@ export default function LoginPage() {
             Sign in
           </h2>
           <p className="mb-6 text-xs leading-[1.7] text-[#9da9a5]">
-            Use your patient ID or username to continue.
+            Use your patient ID, username, or email to continue.
           </p>
           <LoginForm />
+          <p className="mt-5 text-center text-xs text-[#9da9a5]">
+            New to Aayu Hub?{" "}
+            <Link
+              className="text-[#e6b778] transition-colors hover:text-[#f0bd7f]"
+              href="/signup"
+            >
+              Create an account
+            </Link>
+          </p>
           <p className="mt-5 border-t border-white/[.09] pt-4 text-[10px] leading-[1.8] text-[#8e9994]">
             Demo access:{" "}
             <strong className="font-medium text-[#c9c9bf]">AAYU-1001</strong> /{" "}
