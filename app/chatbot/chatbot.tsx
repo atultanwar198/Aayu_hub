@@ -12,36 +12,26 @@ import {
 } from "lucide-react";
 import questionData from "@/data/questions.json";
 
-type QuestionEntry = (typeof questionData)[number];
 type Message = {
   id: number;
   role: "assistant" | "user";
   text: string;
+};
+type ChatApiResponse = {
+  question: string;
+  answer: string;
+  sources: {
+    filename: string;
+    department: string;
+    distance: number;
+  }[];
 };
 
 const starterQuestions = questionData.filter((question) => question.id !== "emergency");
 const welcomeMessage =
   "Hi, I’m here to help you find information in the Aayu Hub guide. What would you like to know?";
 
-function findAnswer(message: string) {
-  const normalizedMessage = message.trim().toLowerCase().replace(/[^\p{L}\p{N}\s']/gu, " ");
-  if (!normalizedMessage) return null;
 
-  const matches = (question: QuestionEntry) =>
-    question.keywords.some((keyword) =>
-      normalizedMessage.includes(keyword.toLowerCase()),
-    );
-
-  const emergencyEntry = questionData.find((question) => question.id === "emergency");
-  if (emergencyEntry && matches(emergencyEntry)) return emergencyEntry.answer;
-
-  const matchedEntry = questionData.find(
-    (question) => question.id !== "emergency" && matches(question),
-  );
-  if (matchedEntry) return matchedEntry.answer;
-
-  return "I don’t have a prepared answer for that question yet. I can help with preparing for an appointment, noting symptoms, medicines, the patient portal, or privacy. For personal medical advice, please contact a qualified healthcare professional.";
-}
 
 export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([
@@ -56,18 +46,83 @@ export default function Chatbot() {
     bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [messages]);
 
-  function askQuestion(question: string) {
-    const answer = findAnswer(question);
-    if (!answer) return;
+  async function askQuestion(question: string) {
+  const trimmedQuestion = question.trim();
 
-    setMessages((currentMessages) => [
-      ...currentMessages,
-      { id: messageId, role: "user", text: question },
-      { id: messageId + 1, role: "assistant", text: answer },
-    ]);
-    setMessageId((currentId) => currentId + 2);
-    setInput("");
+  if (!trimmedQuestion) return;
+
+  const userMessageId = messageId;
+  const assistantMessageId = messageId + 1;
+
+  setMessages((currentMessages) => [
+    ...currentMessages,
+    {
+      id: userMessageId,
+      role: "user",
+      text: trimmedQuestion,
+    },
+    {
+      id: assistantMessageId,
+      role: "assistant",
+      text: "Searching the Aayu Hub medical information guide...",
+    },
+  ]);
+
+  setMessageId((currentId) => currentId + 2);
+  setInput("");
+
+  try {
+    const apiUrl =
+      process.env.NEXT_PUBLIC_API_URL ??
+      "http://127.0.0.1:8000";
+
+    const response = await fetch(`${apiUrl}/api/chat`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        question: trimmedQuestion,
+      }),
+    });
+
+   if (!response.ok) {
+  const errorData = await response.json().catch(() => null);
+
+  throw new Error(
+    errorData?.detail || "The chatbot API request failed."
+  );
+}
+
+const data: ChatApiResponse = await response.json();
+
+const reply =
+  data.answer?.trim() ||
+  "I couldn't generate an answer right now. Please try again, or consult a qualified healthcare professional.";
+
+  setMessages((currentMessages) =>
+    currentMessages.map((message) =>
+      message.id === assistantMessageId
+       ? { ...message, text: reply }
+       : message
+   )
+  );
+  } catch (error) {
+    console.error("Aayu Hub chatbot error:", error);
+
+    setMessages((currentMessages) =>
+      currentMessages.map((message) =>
+        message.id === assistantMessageId
+          ? {
+              ...message,
+              text:
+                "I'm unable to connect to the Aayu Hub service right now. Please try again in a moment.",
+            }
+          : message
+      )
+    );
   }
+}
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -86,7 +141,7 @@ export default function Chatbot() {
       className="overflow-hidden rounded-[26px] border border-[#dfe8df] bg-white shadow-[0_24px_70px_rgba(47,78,66,.11)]"
       aria-label="Aayu Hub question chatbot"
     >
-      <div className="h-1 bg-gradient-to-r from-[#9ac7a8] via-[#3f9278] to-[#e6c18a]" />
+      <div className="h-1 bg-gradient-~to-r from-[#9ac7a8] via-[#3f9278] to-[#e6c18a]" />
       <div className="flex items-center justify-between border-b border-[#e8ede7] px-4 py-4 sm:px-6">
         <div className="flex items-center gap-3">
           <span className="relative grid size-12 place-items-center rounded-2xl bg-gradient-to-br from-[#e7f3e9] to-[#dceee4] text-[#347361] shadow-sm">

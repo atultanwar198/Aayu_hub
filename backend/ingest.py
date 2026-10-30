@@ -16,7 +16,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 
 
 # Paths
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent
 DOCS_PATH = BASE_DIR / "docs"
 
 load_dotenv(BASE_DIR / ".env")
@@ -25,7 +25,7 @@ CONNECTION_STRING = os.getenv("PG_CONNECTION")
 
 if not CONNECTION_STRING:
     raise ValueError(
-        "PG_CONNECTION not found. Check your .env file."
+        f"PG_CONNECTION not found. Check your .env file. at {BASE_DIR/'.env'}"
     )
 
 

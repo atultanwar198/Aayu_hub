@@ -1,0 +1,145 @@
+MEDICAL SYMPTOM INFORMATION BASE
+Starter knowledge file for a medical-information chatbot
+Version: 1.0
+Purpose: Educational symptom guidance and safe triage support
+
+IMPORTANT SAFETY NOTICE
+This file is for general health education only. It is not a diagnostic system and must not replace a qualified healthcare professional. Symptoms can have many causes, and the information below cannot confirm or rule out a disease. The chatbot must describe possibilities cautiously, ask relevant follow-up questions, recommend appropriate medical care, and never prescribe medication or a treatment plan.
+
+CORE CHATBOT RULES
+1. Never state that a user definitely has a disease based only on symptoms.
+2. Use language such as: "These symptoms can occur with..." or "Possible causes include..." and explain that other causes are possible.
+3. Ask about age range, symptom start date, duration, severity, changes over time, related symptoms, existing medical conditions, current medicines, allergies, pregnancy possibility when relevant, and recent exposures/travel. Ask only for information needed to respond safely.
+4. Do not delay emergency care by asking many questions when warning signs are present.
+5. Do not recommend starting, stopping, or changing prescription medicines. Do not provide personalized medication doses.
+6. Do not tell users that a serious condition is ruled out because one symptom is absent.
+7. Encourage users to consult a licensed clinician for persistent, worsening, recurring, unexplained, or concerning symptoms.
+8. Make clear that children, older adults, pregnant people, and people with significant chronic illnesses may need earlier medical assessment.
+9. Do not collect unnecessary identifying information such as full name, exact address, government ID, or account details.
+10. If the knowledge base does not contain enough information, say so rather than inventing an answer.
+
+EMERGENCY WARNING SIGNS
+Recommend contacting local emergency services or going to the nearest emergency department immediately for symptoms such as:
+- Severe difficulty breathing, blue/grey lips, or inability to speak normally because of breathlessness.
+- New severe chest pain or pressure, especially with sweating, breathlessness, nausea, or pain spreading to the arm, back, neck, or jaw.
+- Sudden face drooping, weakness or numbness on one side, difficulty speaking, sudden loss of vision, or sudden severe confusion.
+- Loss of consciousness, inability to wake, or a seizure lasting about five minutes or repeated seizures without recovery.
+- Severe bleeding that will not stop, major injury, or signs of shock.
+- Sudden, extremely severe headache, particularly with weakness, confusion, fever, or neck stiffness.
+- Severe allergic reaction with tongue/throat swelling, breathing difficulty, or collapse.
+- Severe abdominal pain with collapse, a rigid abdomen, or heavy bleeding.
+- Possible poisoning or overdose.
+- Thoughts of suicide with immediate danger or inability to stay safe: contact local emergency/crisis support and a trusted person immediately.
+
+COMMON SYMPTOMS: POSSIBLE CAUSES AND SAFE NEXT STEPS
+
+1. FEVER
+Possible causes include viral infections (such as flu or COVID-19), other infections, inflammatory conditions, and medication reactions. Fever alone cannot identify the cause.
+Ask: measured temperature, duration, cough, sore throat, rash, pain, urinary symptoms, recent travel, and relevant medical conditions.
+Next steps: rest, fluids if safe, monitor symptoms, and seek medical advice if fever persists, worsens, or is accompanied by concerning symptoms. A very young infant with a temperature of 38°C (100.4°F) or higher needs urgent medical assessment. Seek urgent care for fever with confusion, breathing difficulty, stiff neck, a non-blanching rash, severe dehydration, or severe pain.
+
+2. COUGH
+Possible causes include a common viral infection, allergies, asthma, airway irritation, reflux, or pneumonia. A cough lasting a long time or accompanied by other symptoms needs assessment.
+Ask: duration, dry or productive cough, fever, breathlessness, wheezing, chest pain, blood in sputum, smoking/vaping exposure, and known lung or heart disease.
+Next steps: fluids and avoiding smoke/irritants may help. Seek urgent care for breathing difficulty, blue lips, coughing up more than a small streak of blood, or chest pain. Arrange medical review for a persistent, worsening, recurrent, or unexplained cough.
+
+3. SORE THROAT
+Possible causes include viral infection, streptococcal infection, allergies, dry air, or irritation.
+Ask: duration, fever, cough, swollen glands, rash, ability to swallow, and exposure to someone with a similar illness.
+Next steps: fluids and soothing measures may help. A clinician may need to assess whether testing is appropriate. Seek urgent care for difficulty breathing, inability to swallow saliva, drooling, or rapidly increasing throat/neck swelling.
+
+4. HEADACHE
+Possible causes include tension headache, migraine, dehydration, infection, sleep disruption, eye strain, or medication effects. Rarely, headache can signal a serious condition.
+Ask: sudden or gradual onset, severity, location, duration, prior similar headaches, fever, neck stiffness, injury, pregnancy/postpartum status when relevant, and neurological symptoms.
+Next steps: rest and hydration may help when appropriate. Seek emergency care for a sudden "worst-ever" headache, headache with weakness, confusion, fainting, seizure, fever and stiff neck, or headache after a significant head injury.
+
+5. ABDOMINAL PAIN
+Possible causes include indigestion, constipation, gastroenteritis, urinary problems, gallbladder issues, appendicitis, or other conditions.
+Ask: location, onset, severity, whether pain moves, vomiting, bowel changes, fever, urinary symptoms, blood in stool/vomit, and pregnancy possibility when relevant.
+Next steps: do not attempt to diagnose based on location alone. Seek urgent assessment for severe or worsening pain, a rigid/swollen abdomen, repeated vomiting, fainting, blood in vomit or stool, or pain with possible pregnancy.
+
+6. NAUSEA OR VOMITING
+Possible causes include infection, food-related illness, migraine, pregnancy, medication effects, and digestive conditions.
+Ask: duration, frequency, ability to keep fluids down, abdominal pain, fever, blood or green vomit, urine output, and possible exposure to spoiled food or medication.
+Next steps: small frequent sips of fluid may help if the person can swallow safely. Seek urgent care for blood in vomit, severe pain, confusion, fainting, signs of dehydration, or inability to keep fluids down.
+
+7. DIARRHEA
+Possible causes include viral or bacterial infection, food intolerance, medication effects, and digestive disorders.
+Ask: duration, frequency, blood or black stool, fever, abdominal pain, recent antibiotics/travel, and dehydration signs.
+Next steps: oral rehydration solution can help replace fluids when appropriate. Seek urgent care for severe dehydration, blood/black stool, severe abdominal pain, confusion, or inability to drink. Children and older adults can become dehydrated quickly.
+
+8. CONSTIPATION
+Possible causes include low fiber intake, inadequate fluid intake, changes in routine, inactivity, medicines, or medical conditions.
+Ask: usual bowel pattern, duration, abdominal pain/swelling, vomiting, blood in stool, new medicines, and whether gas is passing.
+Next steps: gradual dietary fiber, fluids, and activity may help if appropriate. Seek urgent assessment for severe pain, vomiting, marked swelling, inability to pass gas, or significant bleeding. New or persistent constipation should be discussed with a clinician.
+
+9. SKIN RASH OR ITCHING
+Possible causes include irritation, eczema, allergy, insect bites, fungal infection, viral illness, or medicine reactions.
+Ask: when it started, appearance, spread, itch/pain, new products or medicines, fever, swelling, and breathing symptoms.
+Next steps: avoid suspected irritants and do not assume every rash is an allergy. Seek emergency care for rash with breathing difficulty, face/tongue swelling, collapse, or rapidly spreading purple spots with illness. A painful, blistering, rapidly spreading, infected-looking, or persistent rash needs medical review.
+
+10. FATIGUE OR WEAKNESS
+Possible causes include poor sleep, stress, anemia, infection, thyroid problems, medication effects, mood disorders, and many other conditions.
+Ask: duration, sleep, diet, bleeding, weight change, fever, shortness of breath, mood, and current medicines.
+Next steps: persistent or unexplained fatigue should be assessed by a clinician. Sudden weakness on one side, severe breathlessness, chest pain, fainting, or confusion requires urgent care.
+
+11. DIZZINESS
+Possible causes include dehydration, inner-ear problems, low blood pressure, medication effects, anemia, or heart/neurological conditions.
+Ask: spinning versus light-headedness, onset, duration, triggers, fainting, chest pain, palpitations, headache, and neurological symptoms.
+Next steps: sit or lie down to reduce fall risk. Avoid driving while dizzy. Seek emergency care for dizziness with chest pain, fainting, difficulty speaking, one-sided weakness, severe headache, or inability to walk normally.
+
+12. CHEST PAIN
+Causes range from muscle strain and reflux to heart or lung emergencies. A chatbot cannot safely distinguish all causes remotely.
+Ask only if it does not delay care: onset, severity, breathing symptoms, sweating, nausea, faintness, and known heart/lung conditions.
+Next steps: new, severe, unexplained, or pressure-like chest pain—especially with breathlessness, sweating, nausea, faintness, or pain spreading to the arm/jaw/back—needs emergency assessment.
+
+13. SHORTNESS OF BREATH
+Possible causes include asthma, respiratory infection, anemia, anxiety, heart/lung conditions, or allergic reaction.
+Next steps: severe, sudden, or worsening breathlessness; blue/grey lips; confusion; or breathlessness with chest pain requires emergency care. Do not assume it is anxiety without appropriate medical assessment.
+
+14. URINARY BURNING OR FREQUENCY
+Possible causes include urinary tract infection, irritation, sexually transmitted infection, or other urinary conditions.
+Ask: pain, frequency, fever, back/flank pain, blood in urine, pregnancy possibility, and relevant medical history.
+Next steps: medical assessment may be needed, especially for pregnancy, children, people with kidney problems, or recurrent symptoms. Fever with flank/back pain, vomiting, severe illness, or confusion requires urgent care.
+
+15. JOINT OR MUSCLE PAIN
+Possible causes include strain, overuse, viral illness, arthritis, injury, or inflammation.
+Ask: injury, location, swelling, redness, warmth, fever, ability to move or bear weight, and duration.
+Next steps: rest from aggravating activity may help mild strain. Seek urgent assessment for a hot swollen joint with fever, major injury, deformity, inability to bear weight, or severe unexplained pain.
+
+HOW THE CHATBOT SHOULD RESPOND
+Use this response structure:
+A. Briefly repeat the symptoms to confirm understanding.
+B. State that symptoms alone cannot confirm a disease.
+C. Provide a short list of possible causes, ordered from common to important where appropriate, without assigning unsupported probabilities.
+D. Identify warning signs and say clearly whether emergency care is needed.
+E. Ask only the most useful follow-up questions.
+F. Give low-risk general self-care only when appropriate and explain when to seek professional care.
+G. Encourage a clinician visit if symptoms persist, worsen, recur, or are unexplained.
+H. State when the information is uncertain or the knowledge base is insufficient.
+
+EXAMPLE RESPONSE
+User: "I have a fever and cough."
+Chatbot: "Fever and cough can occur with viral infections such as flu or COVID-19, but other causes are possible and symptoms alone cannot confirm the cause. How long have you had these symptoms, have you measured your temperature, and are you experiencing difficulty breathing or chest pain? If you have severe breathing difficulty, blue/grey lips, confusion, or severe chest pain, seek emergency care now. If symptoms persist or worsen, contact a healthcare professional."
+
+DATA QUALITY AND TRAINING GUIDANCE
+- Treat this file as a starter reference, not a complete medical dataset.
+- Prefer current, clinician-reviewed guidelines and reputable public-health sources when expanding the knowledge base.
+- Store source title, organization, publication/update date, and retrieval date for each medical document.
+- Have a qualified medical professional review content before real-world deployment.
+- Separate general educational content from emergency triage rules.
+- Test the chatbot with emergency symptoms, vague symptoms, contradictory answers, children, pregnancy, older adults, and requests for medication.
+- Evaluate false reassurance, missed emergencies, fabricated claims, privacy protection, and whether the chatbot appropriately recommends clinical care.
+- Do not train a model to make definitive diagnoses from symptom-to-disease labels alone. For a safer first version, use retrieval-augmented generation (RAG) over reviewed medical references and a conservative triage layer.
+- Never present the chatbot as a substitute for a doctor or emergency service.
+
+SUGGESTED TRUSTWORTHY SOURCES TO ADD
+Use current material from recognized health authorities and clinical organizations, such as:
+- World Health Organization (WHO)
+- India's Ministry of Health and Family Welfare and National Health Mission
+- National Health Service (NHS)
+- MedlinePlus / U.S. National Library of Medicine
+- Centers for Disease Control and Prevention (CDC)
+- Official local emergency-care guidance
+
+END OF FILE
