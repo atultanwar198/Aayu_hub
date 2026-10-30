@@ -1,4 +1,6 @@
 import Link from "next/link";
+import SiteNav from "@/components/site-nav";
+import SiteFooter from "@/components/site-footer";
 import {
   ArrowDown,
   ArrowRight,
@@ -60,25 +62,7 @@ const steps = [
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#fbfaf7] text-[#243331]">
-      <header className="sticky top-0 z-20 border-b border-[#e7e9e3] bg-[#fbfaf7]/95 backdrop-blur">
-        <div className="mx-auto flex min-h-[76px] max-w-6xl items-center justify-between px-5 sm:px-8">
-          <Link className="inline-flex items-center gap-3 text-lg font-bold tracking-[-.04em] text-[#183d38]" href="/">
-            <span className="grid size-10 place-items-center rounded-xl bg-[#e6f1e9] text-[#357465]" aria-hidden="true">
-              <HeartPulse size={23} strokeWidth={2} />
-            </span>
-            Aayu<span className="-ml-3 text-[#4c8778]">Hub</span>
-          </Link>
-          <nav className="hidden items-center gap-8 text-sm font-medium text-[#52645e] md:flex" aria-label="Main navigation">
-            <a className="transition-colors hover:text-[#287360]" href="#how-it-works">How it works</a>
-            <a className="transition-colors hover:text-[#287360]" href="#topics">Explore topics</a>
-            <a className="transition-colors hover:text-[#287360]" href="#about">About</a>
-            <Link className="transition-colors hover:text-[#287360]" href="/chatbot">Ask a question</Link>
-          </nav>
-          <Link className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-[#286d5c] px-4 text-sm font-semibold text-white shadow-sm transition hover:bg-[#205b4d] focus:outline-none focus:ring-2 focus:ring-[#286d5c] focus:ring-offset-2" href="/login">
-            Patient portal <ArrowRight size={17} />
-          </Link>
-        </div>
-      </header>
+      <SiteNav />
 
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute -right-36 -top-40 size-[520px] rounded-full bg-[#e5f1e8] blur-3xl" aria-hidden="true" />
@@ -232,17 +216,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-[#e5e9e3] bg-white">
-        <div className="mx-auto flex max-w-6xl flex-col gap-5 px-5 py-8 text-sm text-[#65766d] sm:px-8 md:flex-row md:items-center md:justify-between">
-          <Link className="inline-flex items-center gap-2 font-semibold text-[#315d50]" href="/">
-            <HeartPulse size={19} /> Aayu Hub
-          </Link>
-          <p className="max-w-2xl leading-6">
-            Aayu Hub provides general health information, not medical diagnosis or emergency care. Talk to a qualified healthcare professional about your personal health.
-          </p>
-          <Link className="inline-flex items-center gap-2 font-semibold text-[#347361] hover:text-[#205b4d]" href="/login">Patient portal <ArrowRight size={16} /></Link>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

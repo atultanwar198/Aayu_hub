@@ -33,7 +33,7 @@ export default function LogoutButton() {
         <LogOut size={16} /> Sign out
       </button>
       {error && (
-        <span         className="text-sm text-[#b42318]" role="alert">
+        <span className="text-sm text-[#b42318]" role="alert">
           {error}
         </span>
       )}

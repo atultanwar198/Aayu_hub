@@ -15,6 +15,7 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/login/page.js"
+<<<<<<< HEAD
     ],
     "/api/auth/login/route": [
       "static/chunks/webpack.js",
@@ -45,6 +46,8 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/api/auth/logout/route.js"
+=======
+>>>>>>> 4d2ef94d2cd844b054e009a6b61f9f25d0b40646
     ]
   }
 }

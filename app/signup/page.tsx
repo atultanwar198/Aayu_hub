@@ -1,19 +1,12 @@
-import Link from "next/link";
-import { ArrowLeft, HeartPulse, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import SignupForm from "./signup-form";
+import SiteNav from "@/components/site-nav";
+import SiteFooter from "@/components/site-footer";
 
 export default function Signup() {
   return (
     <main className="min-h-screen bg-[radial-gradient(ellipse_at_75%_25%,#e6f1e9_0%,#fbfaf7_50%,#f8f6f0_100%)] px-5 sm:px-8">
-      <nav className="mx-auto flex min-h-[78px] max-w-6xl items-center justify-between border-b border-[#e5e9e3]">
-        <Link className="inline-flex items-center gap-3 text-lg font-bold tracking-[-.04em] text-[#183d38]" href="/">
-          <span className="grid size-10 place-items-center rounded-xl bg-[#e6f1e9] text-[#357465]" aria-hidden="true"><HeartPulse size={23} /></span>
-          Aayu<span className="-ml-3 text-[#4c8778]">Hub</span>
-        </Link>
-        <Link className="inline-flex items-center gap-2 text-sm font-medium text-[#52645e] transition hover:text-[#287360]" href="/">
-          <ArrowLeft size={17} /> Back to Aayu Hub
-        </Link>
-      </nav>
+      <SiteNav variant="back" backLabel="Back to Aayu Hub" />
       <section className="mx-auto grid min-h-[calc(100vh-80px)] max-w-5xl items-center gap-12 py-12 md:grid-cols-2 md:gap-16">
         <div>
           <p className="inline-flex items-center gap-2 rounded-full border border-[#dce9df] bg-white/80 px-4 py-2 text-sm font-semibold text-[#347361]">
@@ -38,6 +31,7 @@ export default function Signup() {
           </p>
         </div>
       </section>
+      <SiteFooter note="This signup form is for demonstration only. It does not store or send your information." />
     </main>
   );
 }

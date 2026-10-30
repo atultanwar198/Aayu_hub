@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "/api/auth/signup/route": "app/api/auth/signup/route.js",
   "/api/auth/logout/route": "app/api/auth/logout/route.js",
   "/api/auth/login/route": "app/api/auth/login/route.js",
@@ -7,4 +8,8 @@
   "/chatbot/page": "app/chatbot/page.js",
   "/signup/page": "app/signup/page.js",
   "/patients/page": "app/patients/page.js"
+=======
+  "/page": "app/page.js",
+  "/login/page": "app/login/page.js"
+>>>>>>> 4d2ef94d2cd844b054e009a6b61f9f25d0b40646
 }
