@@ -10,5 +10,11 @@
     "username": "hmmnahh2003@gmail.com",
     "passwordHash": "scrypt$c6d4fafba71a9f3bc3c9b9a74940287f$a86bf1237dc30fe5f25db586ab4ee5b4be584ea5668b52d7932024fea217de99fbcec0fb1b001ab9f24086ea65e85cd843457f26f04651fc15aa58668fd00741",
     "patientId": "PAT-A2A624F73BC64AD28FC2B7FCB8A55457"
+  },
+  {
+    "id": "AAYU-5F7B89D0F2A342B4BC1399035C13AD5B",
+    "username": "patient032@gmail.com",
+    "passwordHash": "scrypt$59b4802d2e84640cf6062e6151dddbfc$5759caae233ca0650647d2f67eec7ddaabfd92df3b537e538622fc3a2589676b2c3bc7639dc760b09bac7919bf66e5aba50ef2e62bd1481c792fee287340e745",
+    "patientId": "PAT-5F7B89D0F2A342B4BC1399035C13AD5B"
   }
 ]

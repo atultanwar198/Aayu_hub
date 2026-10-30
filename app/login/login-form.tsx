@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import { ArrowRight } from "lucide-react";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -40,12 +41,12 @@ export default function LoginForm() {
   }
 
   return (
-    <form className="flex flex-col gap-[10px]" onSubmit={handleSubmit}>
-      <label className="mt-2 text-[11px] text-[#d1d6d1]" htmlFor="userId">
+    <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+      <label className="mt-2 text-sm font-medium text-[#40564c]" htmlFor="userId">
         Patient ID, username, or email
       </label>
       <input
-        className="h-12 w-full border border-white/[.14] bg-white/[.035] px-[13px] text-xs text-[#f4f0e8] outline-none placeholder:text-[#737d7a] focus:border-[#d7a66e]"
+        className="h-12 w-full rounded-xl border border-[#d6dfd8] bg-white px-4 text-base text-[#263b33] outline-none placeholder:text-[#89968e] focus:border-[#39806d] focus:ring-2 focus:ring-[#39806d]/20"
         id="userId"
         name="userId"
         type="text"
@@ -53,11 +54,11 @@ export default function LoginForm() {
         placeholder="Enter your patient ID, username, or email"
         required
       />
-      <label className="mt-2 text-[11px] text-[#d1d6d1]" htmlFor="password">
+      <label className="mt-2 text-sm font-medium text-[#40564c]" htmlFor="password">
         Password
       </label>
       <input
-        className="h-12 w-full border border-white/[.14] bg-white/[.035] px-[13px] text-xs text-[#f4f0e8] outline-none placeholder:text-[#737d7a] focus:border-[#d7a66e]"
+        className="h-12 w-full rounded-xl border border-[#d6dfd8] bg-white px-4 text-base text-[#263b33] outline-none placeholder:text-[#89968e] focus:border-[#39806d] focus:ring-2 focus:ring-[#39806d]/20"
         id="password"
         name="password"
         type="password"
@@ -66,19 +67,17 @@ export default function LoginForm() {
         required
       />
       {error && (
-        <p className="mt-[3px] text-xs text-[#f0a39a]" role="alert">
+        <p className="mt-1 text-sm text-[#b42318]" role="alert">
           {error}
         </p>
       )}
       <button
-        className="mt-3 flex min-h-[49px] items-center justify-between border-0 bg-[#dbaa70] px-[15px] text-xs font-semibold text-[#15120d] transition-colors hover:bg-[#efbd82] disabled:cursor-wait disabled:opacity-70"
+        className="mt-3 flex min-h-12 items-center justify-between rounded-xl bg-[#286d5c] px-4 text-base font-semibold text-white transition-colors hover:bg-[#205b4d] focus:outline-none focus:ring-2 focus:ring-[#286d5c] focus:ring-offset-2 disabled:cursor-wait disabled:opacity-70"
         type="submit"
         disabled={loading}
       >
         {loading ? "Signing in..." : "Sign in securely"}
-        <span className="text-[17px]" aria-hidden="true">
-          →
-        </span>
+        <ArrowRight size={19} aria-hidden="true" />
       </button>
     </form>
   );

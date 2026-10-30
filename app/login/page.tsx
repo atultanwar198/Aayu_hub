@@ -1,108 +1,63 @@
 import Link from "next/link";
+import { ArrowRight, HeartPulse, ShieldCheck } from "lucide-react";
 import LoginForm from "./login-form";
 
 export default function LoginPage() {
   return (
-    <main className="min-h-screen bg-[radial-gradient(ellipse_at_82%_30%,#172b2b_0%,#0c1516_44%,#0b1113_78%)] px-[6%] md:px-[8%]">
-      <header className="flex min-h-[88px] items-center justify-between border-b border-white/10">
-        <Link
-          className="inline-flex items-center gap-[11px] text-[13px] font-bold tracking-[.16em]"
-          href="/"
-        >
-          <span
-            className="grid size-[31px] place-items-center border border-[#e7a85b]/65 font-display text-[18px] text-[#e7a85b]"
-            aria-hidden="true"
-          >
-            A
-          </span>
-          <span>
-            AAYU <b className="font-medium text-[#d7a66e]">HUB</b>
-          </span>
+    <main className="min-h-screen bg-[radial-gradient(ellipse_at_80%_15%,#e6f1e9_0%,#fbfaf7_48%,#f8f6f0_100%)] px-5 sm:px-8">
+      <header className="mx-auto flex min-h-[78px] max-w-6xl items-center justify-between border-b border-[#e5e9e3]">
+        <Link className="inline-flex items-center gap-3 text-lg font-bold tracking-[-.04em] text-[#183d38]" href="/">
+          <span className="grid size-10 place-items-center rounded-xl bg-[#e6f1e9] text-[#357465]" aria-hidden="true"><HeartPulse size={23} /></span>
+          Aayu<span className="-ml-3 text-[#4c8778]">Hub</span>
         </Link>
-        <span className="font-mono text-[9px] tracking-[.15em] text-[#9da9a5]">
-          <span className="mr-[7px] text-[#d7a66e]" aria-hidden="true">
-            ⌑
-          </span>{" "}
-          SECURE PATIENT PORTAL
-        </span>
+        <Link className="text-sm font-medium text-[#52645e] transition hover:text-[#287360]" href="/">Back to home</Link>
       </header>
 
-      <section className="mx-auto grid min-h-[calc(100vh-156px)] max-w-[1100px] grid-cols-1 items-center gap-[35px] py-12 md:grid-cols-[1fr_minmax(320px,430px)] md:gap-[10%] md:py-[55px]">
-        <div className="max-w-[560px]">
-          <p className="flex items-center gap-[10px] font-mono text-[10px] tracking-[.17em] text-[#d2b58f]">
-            <span className="size-[6px] rounded-full bg-[#d6a467] shadow-[0_0_12px_rgba(214,164,103,.7)]" />{" "}
-            YOUR CARE, IN ONE PLACE
+      <section className="mx-auto grid min-h-[calc(100vh-150px)] max-w-5xl items-center gap-10 py-12 md:grid-cols-[1fr_minmax(320px,430px)] md:gap-16 md:py-16">
+        <div className="max-w-xl">
+          <p className="inline-flex items-center gap-2 rounded-full border border-[#dce9df] bg-white/80 px-4 py-2 text-sm font-semibold text-[#347361]">
+            <ShieldCheck size={17} /> Your care, in one place
           </p>
-          <h1 className="my-[25px] text-[58px] font-medium leading-[1.02] tracking-[-.055em] md:text-[clamp(52px,6vw,78px)]">
-            Your health,
-            <br />
-            <em className="font-display font-medium text-[#d8aa75]">
-              within reach.
-            </em>
+          <h1 className="mt-6 text-4xl font-semibold leading-tight tracking-[-.04em] text-[#1e3531] sm:text-5xl">
+            Your health,<br /><span className="text-[#39806d]">within reach.</span>
           </h1>
-          <p className="text-sm leading-[1.8] text-[#aeb8b3]">
+          <p className="mt-5 text-lg leading-8 text-[#596b64]">
             Sign in to view your patient information and care details.
           </p>
-          <div className="mt-[25px] flex items-center gap-[14px] text-xs leading-[1.7] text-[#aeb8b3] md:mt-[46px]">
-            <span
-              className="grid size-8 shrink-0 place-items-center rounded-full border border-[#e7a85b]/40 text-[#e7a85b]"
-              aria-hidden="true"
-            >
-              ✓
-            </span>
-            <p>
-              <strong className="text-[13px] font-medium text-[#e6e3db]">
-                Private by design
-              </strong>
-              <br />
-              Your information is only shown after you sign in.
-            </p>
+          <div className="mt-8 flex items-start gap-3 rounded-2xl border border-[#dce9df] bg-white/80 p-5 text-base leading-7 text-[#596b64]">
+            <ShieldCheck className="mt-1 shrink-0 text-[#39806d]" size={21} />
+            <p><strong className="font-semibold text-[#2c433a]">Private by design</strong><br />Your information is only shown after you sign in.</p>
           </div>
         </div>
 
-        <div className="border border-white/[.11] bg-[rgba(15,24,25,.82)] p-[27px] shadow-[0_24px_80px_rgba(0,0,0,.2)] md:p-9">
-          <div className="flex items-center gap-[11px]">
-            <span
-              className="grid size-[30px] place-items-center bg-[#e7a85b]/10 text-[#dfb47f]"
-              aria-hidden="true"
-            >
-              ↗
-            </span>
-            <p className="font-mono text-[10px] tracking-[.17em] text-[#d2b58f]">
-              WELCOME BACK
-            </p>
+        <div className="rounded-3xl border border-[#e2e8e1] bg-white p-6 shadow-[0_24px_70px_rgba(47,78,66,.10)] sm:p-9">
+          <div className="flex items-center gap-3">
+            <span className="grid size-11 place-items-center rounded-2xl bg-[#eaf4ed] text-[#39806d]"><HeartPulse size={22} /></span>
+            <p className="text-sm font-semibold uppercase tracking-[.12em] text-[#48816e]">Welcome back</p>
           </div>
-          <h2 className="mb-2 mt-6 text-[29px] font-medium tracking-[-.03em]">
+          <h2 className="mb-2 mt-6 text-3xl font-semibold tracking-[-.03em] text-[#243b34]">
             Sign in
           </h2>
-          <p className="mb-6 text-xs leading-[1.7] text-[#9da9a5]">
+          <p className="mb-6 text-base leading-7 text-[#687970]">
             Use your patient ID, username, or email to continue.
           </p>
           <LoginForm />
-          <p className="mt-5 text-center text-xs text-[#9da9a5]">
+          <p className="mt-5 text-center text-sm text-[#687970]">
             New to Aayu Hub?{" "}
-            <Link
-              className="text-[#e6b778] transition-colors hover:text-[#f0bd7f]"
-              href="/signup"
-            >
+            <Link className="font-semibold text-[#347361] hover:text-[#205b4d]" href="/signup">
               Create an account
             </Link>
           </p>
-          <p className="mt-5 border-t border-white/[.09] pt-4 text-[10px] leading-[1.8] text-[#8e9994]">
-            Demo access:{" "}
-            <strong className="font-medium text-[#c9c9bf]">AAYU-1001</strong> /{" "}
-            <strong className="font-medium text-[#c9c9bf]">Patient@123</strong>
+          <p className="mt-5 rounded-xl bg-[#f5f8f4] p-4 text-sm leading-6 text-[#687970]">
+            Demo access: <strong className="font-semibold text-[#405d4e]">AAYU-1001</strong> / <strong className="font-semibold text-[#405d4e]">Patient@123</strong>
           </p>
         </div>
       </section>
 
-      <footer className="flex flex-col gap-3 border-t border-white/10 py-[19px] font-mono text-[9px] tracking-[.08em] text-[#77827e] md:flex-row md:justify-between">
-        <span>
-          AAYU HUB <span className="text-[#d7a66e]">·</span> PATIENT PORTAL
-        </span>
-        <span>
-          For demonstration only — do not enter real health information.
-        </span>
+      <footer className="mx-auto flex max-w-6xl flex-col gap-3 border-t border-[#e5e9e3] py-5 text-sm text-[#738078] sm:flex-row sm:justify-between">
+        <span className="inline-flex items-center gap-2"><HeartPulse size={16} /> Aayu Hub · Patient portal</span>
+        <span>Demo only — do not enter real health information.</span>
+        <Link className="inline-flex items-center gap-1 font-medium text-[#347361] hover:text-[#205b4d]" href="/">Learn about Aayu Hub <ArrowRight size={15} /></Link>
       </footer>
     </main>
   );

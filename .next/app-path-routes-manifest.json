@@ -1,0 +1,11 @@
+{
+  "/api/auth/login/route": "/api/auth/login",
+  "/api/auth/logout/route": "/api/auth/logout",
+  "/api/auth/signup/route": "/api/auth/signup",
+  "/_not-found/page": "/_not-found",
+  "/login/page": "/login",
+  "/chatbot/page": "/chatbot",
+  "/page": "/",
+  "/patients/page": "/patients",
+  "/signup/page": "/signup"
+}

@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import { ArrowRight } from "lucide-react";
 
 export default function SignupForm() {
   const router = useRouter();
@@ -43,12 +44,12 @@ export default function SignupForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-[10px]">
-      <label className="mt-2 text-xs text-[#d2cec5]" htmlFor="fullName">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+      <label className="mt-2 text-sm font-medium text-[#40564c]" htmlFor="fullName">
         Your name
       </label>
       <input
-        className="h-[50px] border border-white/[.18] bg-white/[.04] px-[14px] text-sm text-[#f4f0e8] outline-none placeholder:text-[#777c7b] focus:border-[#e7a85b]"
+        className="h-12 rounded-xl border border-[#d6dfd8] bg-white px-4 text-base text-[#263b33] outline-none placeholder:text-[#89968e] focus:border-[#39806d] focus:ring-2 focus:ring-[#39806d]/20"
         id="fullName"
         name="fullName"
         type="text"
@@ -57,11 +58,11 @@ export default function SignupForm() {
         maxLength={100}
         required
       />
-      <label className="mt-2 text-xs text-[#d2cec5]" htmlFor="email">
+      <label className="mt-2 text-sm font-medium text-[#40564c]" htmlFor="email">
         Email address (used to sign in)
       </label>
       <input
-        className="h-[50px] border border-white/[.18] bg-white/[.04] px-[14px] text-sm text-[#f4f0e8] outline-none placeholder:text-[#777c7b] focus:border-[#e7a85b]"
+        className="h-12 rounded-xl border border-[#d6dfd8] bg-white px-4 text-base text-[#263b33] outline-none placeholder:text-[#89968e] focus:border-[#39806d] focus:ring-2 focus:ring-[#39806d]/20"
         id="email"
         name="email"
         type="email"
@@ -70,11 +71,11 @@ export default function SignupForm() {
         maxLength={254}
         required
       />
-      <label className="mt-2 text-xs text-[#d2cec5]" htmlFor="password">
+      <label className="mt-2 text-sm font-medium text-[#40564c]" htmlFor="password">
         Password
       </label>
       <input
-        className="h-[50px] border border-white/[.18] bg-white/[.04] px-[14px] text-sm text-[#f4f0e8] outline-none placeholder:text-[#777c7b] focus:border-[#e7a85b]"
+        className="h-12 rounded-xl border border-[#d6dfd8] bg-white px-4 text-base text-[#263b33] outline-none placeholder:text-[#89968e] focus:border-[#39806d] focus:ring-2 focus:ring-[#39806d]/20"
         id="password"
         name="password"
         type="password"
@@ -85,21 +86,19 @@ export default function SignupForm() {
         required
       />
       {error && (
-        <p className="mt-[3px] text-xs text-[#f0a39a]" role="alert">
+        <p className="mt-1 text-sm text-[#b42318]" role="alert">
           {error}
         </p>
       )}
       <button
-        className="mt-4 flex min-h-[52px] w-full items-center justify-between border-0 bg-[#e7a85b] px-[21px] text-[13px] font-semibold text-[#15120d] transition-colors hover:bg-[#f0bd7f] disabled:cursor-wait disabled:opacity-70"
+        className="mt-3 flex min-h-12 w-full items-center justify-between rounded-xl bg-[#286d5c] px-4 text-base font-semibold text-white transition-colors hover:bg-[#205b4d] focus:outline-none focus:ring-2 focus:ring-[#286d5c] focus:ring-offset-2 disabled:cursor-wait disabled:opacity-70"
         type="submit"
         disabled={loading}
       >
-        {loading ? "Creating account..." : "Create account"}{" "}
-        <span className="text-lg" aria-hidden="true">
-          →
-        </span>
+        {loading ? "Creating account..." : "Create account"}
+        <ArrowRight size={19} aria-hidden="true" />
       </button>
-      <p className="text-[11px] leading-[1.6] text-[#818886]">
+      <p className="text-sm leading-6 text-[#738078]">
         Demo account details are stored in local JSON files on this server.
       </p>
     </form>
