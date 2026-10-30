@@ -1,0 +1,8 @@
+[
+  {
+    "id": "AAYU-1001",
+    "username": "jane.doe",
+    "passwordHash": "scrypt$6fa3f83568048930b7e28bc90adff3fa$cc1da83d27bd3ace5e4c6cc5ff48e195df3c930062fb042e55ad7000039d67000a10b35e601302453215a6bc8e02aa3df827613dd96ac570d03df146fea2f72e",
+    "patientId": "PAT-2001"
+  }
+]

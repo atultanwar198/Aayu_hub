@@ -1,0 +1,21 @@
+[
+  {
+    "patientId": "PAT-2001",
+    "fullName": "Jane Doe",
+    "dateOfBirth": "1988-04-12",
+    "bloodType": "O+",
+    "allergies": ["Penicillin"],
+    "conditions": ["Seasonal asthma"],
+    "medications": [
+      {
+        "name": "Salbutamol inhaler",
+        "instructions": "Use as prescribed by your clinician"
+      }
+    ],
+    "emergencyContact": {
+      "name": "Alex Doe",
+      "relationship": "Sibling",
+      "phone": "(555) 010-2001"
+    }
+  }
+]
