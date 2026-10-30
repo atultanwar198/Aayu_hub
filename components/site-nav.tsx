@@ -44,29 +44,35 @@ export default function SiteNav({
                 className="hidden items-center gap-8 text-sm font-medium text-[#52645e] md:flex"
                 aria-label="Main navigation"
               >
-                <a
+                <Link
                   className="transition-colors hover:text-[#287360]"
                   href="/#how-it-works"
                 >
                   How it works
-                </a>
-                <a
+                </Link>
+                <Link
                   className="transition-colors hover:text-[#287360]"
                   href="/#topics"
                 >
                   Explore topics
-                </a>
-                <a
+                </Link>
+                <Link
                   className="transition-colors hover:text-[#287360]"
                   href="/#about"
                 >
                   About
-                </a>
+                </Link>
                 <Link
                   className="transition-colors hover:text-[#287360]"
                   href="/chatbot"
                 >
                   Ask a question
+                </Link>
+                <Link
+                  className="transition-colors hover:text-[#287360]"
+                  href="/hospitals"
+                >
+                  Hospitals
                 </Link>
               </nav>
               <Link

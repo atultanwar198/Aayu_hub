@@ -1,0 +1,237 @@
+[
+  {
+    "id": "medanta-gurugram",
+    "name": "Medanta - The Medicity",
+    "description": "Multi-specialty tertiary-care hospital in Sector 38, Gurugram.",
+    "address": "CH Baktawar Singh Road, Sector 38",
+    "city": "Gurugram",
+    "state": "Haryana",
+    "postalCode": "122001",
+    "phone": "+91-8800001068",
+    "website": "https://www.medanta.org/hospitals-near-me/gurugram-hospital",
+    "specialties": [
+      "Cardiology"
+    ],
+    "emergencyServices": true
+  },
+  {
+    "id": "fortis-memorial-research-institute",
+    "name": "Fortis Memorial Research Institute",
+    "description": "Multi-specialty tertiary-care hospital in Sector 44, Gurugram.",
+    "address": "Sector 44, Opposite HUDA City Centre",
+    "city": "Gurugram",
+    "state": "Haryana",
+    "postalCode": "122002",
+    "phone": "+91-124-4962200",
+    "website": "https://www.fortishealthcare.com/location/fortis-memorial-research-institute-gurgaon",
+    "specialties": [
+      "Cardiology"
+    ],
+    "emergencyServices": true
+  },
+  {
+    "id": "artemis-hospital-gurgaon",
+    "name": "Artemis Hospital",
+    "description": "Multi-specialty hospital providing tertiary care in Sector 51, Gurugram.",
+    "address": "Sector 51",
+    "city": "Gurugram",
+    "state": "Haryana",
+    "postalCode": "122001",
+    "phone": "+91-124-4511111",
+    "website": "https://www.artemishospitals.com/",
+    "specialties": [
+      "Cardiology",
+      "Orthopaedics"
+    ],
+    "emergencyServices": true
+  },
+  {
+    "id": "max-hospital-gurugram",
+    "name": "Max Hospital, Gurugram",
+    "description": "Multi-specialty hospital located in Sushant Lok Phase I, Gurugram.",
+    "address": "B Block, Sushant Lok Phase I, near Millennium City Centre Metro Station",
+    "city": "Gurugram",
+    "state": "Haryana",
+    "postalCode": "122001",
+    "phone": "+91-124-6623000",
+    "website": "https://www.maxhealthcare.in/",
+    "specialties": [],
+    "emergencyServices": true
+  },
+  {
+    "id": "paras-hospital-gurugram",
+    "name": "Paras Health, Gurugram",
+    "description": "Multi-specialty hospital located in Sushant Lok Phase I, Sector 43.",
+    "address": "C-1, Sushant Lok Phase I, Sector 43",
+    "city": "Gurugram",
+    "state": "Haryana",
+    "postalCode": "122002",
+    "phone": "+91-8080808069",
+    "website": "https://www.parashospitals.com/gurugram",
+    "specialties": [],
+    "emergencyServices": true
+  },
+  {
+    "id": "ck-birla-hospital-gurugram",
+    "name": "CK Birla Hospital",
+    "description": "Multi-specialty hospital in Mayfield Garden, Sector 51, Gurugram.",
+    "address": "Block J, Mayfield Garden, Sector 51",
+    "city": "Gurugram",
+    "state": "Haryana",
+    "postalCode": "122018",
+    "phone": "+91-124-4570112",
+    "website": "https://www.ckbhospital.com/",
+    "specialties": [
+      "Dermatology",
+      "Orthopaedics"
+    ],
+    "emergencyServices": true
+  },
+  {
+    "id": "manipal-hospital-palam-vihar",
+    "name": "Manipal Hospital, Palam Vihar",
+    "description": "Multi-specialty hospital providing cardiac, orthopaedic and emergency care.",
+    "address": "Block F, Gol Chakkar, Palam Vihar",
+    "city": "Gurugram",
+    "state": "Haryana",
+    "postalCode": "122017",
+    "phone": "+91-124-6185561",
+    "website": "https://www.manipalhospitals.com/gurugram/",
+    "specialties": [
+      "Cardiology",
+      "Orthopaedics"
+    ],
+    "emergencyServices": true
+  },
+  {
+    "id": "park-hospital-sector-47",
+    "name": "Park Hospital, Sector 47",
+    "description": "Multi-specialty hospital with 24-hour emergency services in South City II.",
+    "address": "Q Block, South City II, Sohna Road, Sector 47",
+    "city": "Gurugram",
+    "state": "Haryana",
+    "postalCode": "122018",
+    "phone": "+91-124-6746077",
+    "website": "https://www.parkhospital.in/",
+    "specialties": [],
+    "emergencyServices": true
+  },
+  {
+    "id": "marengo-asia-hospitals-gurugram",
+    "name": "Marengo Asia Hospitals, Gurugram",
+    "description": "Multi-specialty hospital offering cardiac, orthopaedic, dermatology and eye-care services.",
+    "address": "Golf Course Extension Road, Sushant Lok II, Sector 56",
+    "city": "Gurugram",
+    "state": "Haryana",
+    "postalCode": "122011",
+    "phone": "1800-309-4444",
+    "website": "https://marengoasiahospitals.com/hospitals-near-me/gurugram",
+    "specialties": [
+      "Cardiology",
+      "Dermatology",
+      "Orthopaedics",
+      "Ophthalmology"
+    ],
+    "emergencyServices": true
+  },
+  {
+    "id": "narayana-superspeciality-gurugram",
+    "name": "Narayana Superspeciality Hospital, Gurugram",
+    "description": "Multi-specialty hospital in DLF Phase III, Sector 24, Gurugram.",
+    "address": "Plot 3201, Block V, DLF Phase III, Nathupur, Sector 24",
+    "city": "Gurugram",
+    "state": "Haryana",
+    "postalCode": "122002",
+    "phone": "08069266140",
+    "website": "https://www.narayanahealth.org/hospitals-clinics/gurugram/narayana-superspeciality-hospital-gurugram",
+    "specialties": [
+      "Cardiology",
+      "Orthopaedics"
+    ],
+    "emergencyServices": true
+  },
+  {
+    "id": "shalby-international-hospitals",
+    "name": "SHALBY International Hospitals",
+    "description": "Multi-specialty hospital on Golf Course Road in Sector 53, Gurugram.",
+    "address": "Golf Course Road, DLF Phase 5, Sector 53",
+    "city": "Gurugram",
+    "state": "Haryana",
+    "postalCode": "122011",
+    "phone": "+91-9986611399",
+    "website": "https://shalbyinternational.com/",
+    "specialties": [],
+    "emergencyServices": true
+  },
+  {
+    "id": "esic-model-hospital-gurugram",
+    "name": "ESIC Model Hospital, Gurugram",
+    "description": "Employees' State Insurance hospital primarily serving eligible insured persons and their dependants.",
+    "address": "Near Petrol Pump, Sector 9A",
+    "city": "Gurugram",
+    "state": "Haryana",
+    "postalCode": "122001",
+    "phone": "+91-124-2252001",
+    "website": "https://hryesi.gov.in/",
+    "specialties": [],
+    "emergencyServices": true
+  },
+  {
+    "id": "esi-hospital-manesar",
+    "name": "ESI Hospital, Manesar",
+    "description": "Employees' State Insurance hospital serving eligible insured persons and dependants in the Manesar area.",
+    "address": "Kasan Gaon Road, Sector 3, IMT Manesar",
+    "city": "Gurugram",
+    "state": "Haryana",
+    "postalCode": "122051",
+    "phone": "",
+    "website": "https://hryesi.gov.in/",
+    "specialties": [],
+    "emergencyServices": false
+  },
+  {
+    "id": "civil-hospital-sector-10",
+    "name": "District Civil Hospital, Gurugram",
+    "description": "Government public hospital serving patients in Gurugram.",
+    "address": "Sector 10",
+    "city": "Gurugram",
+    "state": "Haryana",
+    "postalCode": "122001",
+    "phone": "+91-124-2333102",
+    "website": "https://gurugram.gov.in/",
+    "specialties": [
+      "Cardiology",
+      "Orthopaedics",
+      "Ophthalmology"
+    ],
+    "emergencyServices": true
+  },
+  {
+    "id": "sub-district-civil-hospital-pataudi",
+    "name": "Sub-District Civil Hospital, Pataudi",
+    "description": "Government healthcare facility serving Pataudi and surrounding areas.",
+    "address": "Pataudi",
+    "city": "Gurugram",
+    "state": "Haryana",
+    "postalCode": "122503",
+    "phone": "",
+    "website": "https://gurugram.gov.in/",
+    "specialties": [
+      "Ophthalmology"
+    ],
+    "emergencyServices": false
+  },
+  {
+    "id": "civil-hospital-sohna",
+    "name": "Civil Hospital, Sohna",
+    "description": "Government healthcare facility serving Sohna and nearby communities.",
+    "address": "Sohna",
+    "city": "Gurugram",
+    "state": "Haryana",
+    "postalCode": "",
+    "phone": "",
+    "website": "https://gurugram.gov.in/",
+    "specialties": [],
+    "emergencyServices": false
+  }
+]

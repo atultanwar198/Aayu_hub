@@ -1,0 +1,17 @@
+[
+  {
+    "hospitalId": "medanta-gurugram",
+    "username": "medanta-demo",
+    "passwordHash": "scrypt$c431db72c647fc30b2cb3352891f6245$ff856c9e0b2f06634303f079f0ef54f557bc9e73f5c36181b8cc1603d693ff0a2866f6c8759ce29f8943c6a6f68281d616672ae7987609526d21be6bd9e5f592"
+  },
+  {
+    "hospitalId": "fortis-memorial-research-institute",
+    "username": "fortis-demo",
+    "passwordHash": "scrypt$7d6d55afa4dea1be6e8a098707f02560$83df041590106e425da306d422da5136cc5dfc31d5af90134fadd3f552fa88e3773d72a62104c71718749989f2b745267cdea3b43ca591de182948fd9928fe08"
+  },
+  {
+    "hospitalId": "artemis-hospital-gurgaon",
+    "username": "artemis-demo",
+    "passwordHash": "scrypt$9f07def517648e0225bb10c07fbb61a8$3e75f95a044318a3107fbddc77868590e22f6e8600f238a772bc5347848c1d946f1eb9e55065b6dca762da1663c6d97b6d963af457dda6ebe82cdad0cd5c9db9"
+  }
+]

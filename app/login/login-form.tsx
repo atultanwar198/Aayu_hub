@@ -24,14 +24,17 @@ export default function LoginForm() {
           password: formData.get("password"),
         }),
       });
-      const result = (await response.json()) as { error?: string };
+      const result = (await response.json()) as {
+        error?: string;
+        redirectTo?: string;
+      };
 
       if (!response.ok) {
         setError(result.error ?? "Unable to sign in. Please try again.");
         return;
       }
 
-      router.replace("/patients");
+      router.replace(result.redirectTo ?? "/patients");
       router.refresh();
     } catch {
       setError("Could not reach the server. Please try again.");
@@ -43,7 +46,7 @@ export default function LoginForm() {
   return (
     <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
       <label className="mt-2 text-sm font-medium text-[#40564c]" htmlFor="userId">
-        Patient ID, username, or email
+        Account ID, username, or email
       </label>
       <input
         className="h-12 w-full rounded-xl border border-[#d6dfd8] bg-white px-4 text-base text-[#263b33] outline-none placeholder:text-[#89968e] focus:border-[#39806d] focus:ring-2 focus:ring-[#39806d]/20"
@@ -51,7 +54,7 @@ export default function LoginForm() {
         name="userId"
         type="text"
         autoComplete="username"
-        placeholder="Enter your patient ID, username, or email"
+        placeholder="Enter your ID, username, or email"
         required
       />
       <label className="mt-2 text-sm font-medium text-[#40564c]" htmlFor="password">

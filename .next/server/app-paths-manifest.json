@@ -1,6 +1,7 @@
 {
-  "/login/page": "app/login/page.js",
-  "/signup/page": "app/signup/page.js",
-  "/chatbot/page": "app/chatbot/page.js",
-  "/page": "app/page.js"
+  "/api/auth/login/route": "app/api/auth/login/route.js",
+  "/api/appointments/routes/route": "app/api/appointments/routes/route.js",
+  "/page": "app/page.js",
+  "/appointments/page": "app/appointments/page.js",
+  "/login/page": "app/login/page.js"
 }

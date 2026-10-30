@@ -27,6 +27,12 @@ export default function SiteFooter({
           </Link>
           <Link
             className="inline-flex items-center gap-1 font-semibold text-[#347361] transition hover:text-[#205b4d]"
+            href="/hospitals"
+          >
+            Hospitals <ArrowRight size={16} />
+          </Link>
+          <Link
+            className="inline-flex items-center gap-1 font-semibold text-[#347361] transition hover:text-[#205b4d]"
             href="/login"
           >
             Patient portal <ArrowRight size={16} />

@@ -16,15 +16,21 @@
       "static/chunks/main-app.js",
       "static/chunks/app/login/page.js"
     ],
-    "/signup/page": [
+    "/api/auth/login/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/signup/page.js"
+      "static/chunks/app/api/auth/login/route.js"
     ],
-    "/chatbot/page": [
+    "/appointments/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/chatbot/page.js"
+      "static/css/app/appointments/page.css",
+      "static/chunks/app/appointments/page.js"
+    ],
+    "/api/appointments/routes/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/appointments/routes/route.js"
     ]
   }
 }

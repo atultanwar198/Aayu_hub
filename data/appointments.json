@@ -1,0 +1,111 @@
+[
+  {
+    "id": "APT-DEMO-1001",
+    "hospitalId": "medanta-gurugram",
+    "patientName": "Demo Patient One",
+    "patientPhone": "+91-90000-00001",
+    "department": "Cardiology",
+    "clinician": "Dr. Sample Cardiologist",
+    "scheduledAt": "2026-10-30T10:00:00+05:30",
+    "status": "confirmed",
+    "priority": "routine",
+    "notes": "Fictional demo appointment"
+  },
+  {
+    "id": "APT-DEMO-1002",
+    "hospitalId": "medanta-gurugram",
+    "patientName": "Demo Patient Two",
+    "patientPhone": "+91-90000-00002",
+    "department": "Emergency",
+    "clinician": "Emergency team",
+    "scheduledAt": "2026-10-30T10:30:00+05:30",
+    "status": "checked_in",
+    "priority": "emergency",
+    "notes": "Fictional demo emergency case"
+  },
+  {
+    "id": "APT-DEMO-1003",
+    "hospitalId": "medanta-gurugram",
+    "patientName": "Demo Patient Three",
+    "patientPhone": "+91-90000-00003",
+    "department": "Neurology",
+    "clinician": "Dr. Sample Neurologist",
+    "scheduledAt": "2026-10-30T11:15:00+05:30",
+    "status": "scheduled",
+    "priority": "routine",
+    "notes": "Fictional demo appointment"
+  },
+  {
+    "id": "APT-DEMO-2001",
+    "hospitalId": "fortis-memorial-research-institute",
+    "patientName": "Demo Patient Four",
+    "patientPhone": "+91-90000-00004",
+    "department": "Oncology",
+    "clinician": "Dr. Sample Oncologist",
+    "scheduledAt": "2026-10-30T12:00:00+05:30",
+    "status": "confirmed",
+    "priority": "routine",
+    "notes": "Fictional demo appointment"
+  },
+  {
+    "id": "APT-DEMO-2002",
+    "hospitalId": "fortis-memorial-research-institute",
+    "patientName": "Demo Patient Five",
+    "patientPhone": "+91-90000-00005",
+    "department": "Emergency",
+    "clinician": "Emergency team",
+    "scheduledAt": "2026-10-30T12:20:00+05:30",
+    "status": "scheduled",
+    "priority": "emergency",
+    "notes": "Fictional demo emergency case"
+  },
+  {
+    "id": "APT-DEMO-3001",
+    "hospitalId": "artemis-hospital-gurgaon",
+    "patientName": "Demo Patient Six",
+    "patientPhone": "+91-90000-00006",
+    "department": "Orthopaedics",
+    "clinician": "Dr. Sample Orthopaedic Specialist",
+    "scheduledAt": "2026-10-30T13:00:00+05:30",
+    "status": "completed",
+    "priority": "routine",
+    "notes": "Fictional demo appointment"
+  },
+  {
+    "id": "APT-DEMO-3002",
+    "hospitalId": "artemis-hospital-gurgaon",
+    "patientName": "Demo Patient Seven",
+    "patientPhone": "+91-90000-00007",
+    "department": "Emergency",
+    "clinician": "Emergency team",
+    "scheduledAt": "2026-10-30T13:15:00+05:30",
+    "status": "checked_in",
+    "priority": "emergency",
+    "notes": "Fictional demo emergency case"
+  },
+  {
+    "id": "APT-DEMO-3003",
+    "hospitalId": "artemis-hospital-gurgaon",
+    "patientName": "Demo Patient Eight",
+    "patientPhone": "+91-90000-00008",
+    "department": "Paediatrics",
+    "clinician": "Dr. Sample Paediatrician",
+    "scheduledAt": "2026-10-31T09:30:00+05:30",
+    "status": "cancelled",
+    "priority": "routine",
+    "notes": "Fictional demo appointment"
+  },
+  {
+    "hospitalId": "artemis-hospital-gurgaon",
+    "patientId": "PAT-2001",
+    "patientName": "Jane Doe",
+    "patientPhone": "+919817381837",
+    "department": "Transplants",
+    "clinician": "To be assigned by the hospital",
+    "scheduledAt": "2026-11-01T03:30:00.000Z",
+    "status": "scheduled",
+    "priority": "routine",
+    "notes": "",
+    "id": "6d9e6936-4d16-4a1f-9232-853ead12a5a4"
+  }
+]

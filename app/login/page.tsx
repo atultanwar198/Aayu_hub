@@ -15,37 +15,66 @@ export default function LoginPage() {
             <ShieldCheck size={17} /> Your care, in one place
           </p>
           <h1 className="mt-6 text-4xl font-semibold leading-tight tracking-[-.04em] text-[#1e3531] sm:text-5xl">
-            Your health,<br /><span className="text-[#39806d]">within reach.</span>
+            Your health,
+            <br />
+            <span className="text-[#39806d]">within reach.</span>
           </h1>
           <p className="mt-5 text-lg leading-8 text-[#596b64]">
-            Sign in to view your patient information and care details.
+            Patients and admins can sign in here to continue.
           </p>
           <div className="mt-8 flex items-start gap-3 rounded-2xl border border-[#dce9df] bg-white/80 p-5 text-base leading-7 text-[#596b64]">
             <ShieldCheck className="mt-1 shrink-0 text-[#39806d]" size={21} />
-            <p><strong className="font-semibold text-[#2c433a]">Private by design</strong><br />Your information is only shown after you sign in.</p>
+            <p>
+              <strong className="font-semibold text-[#2c433a]">
+                Private by design
+              </strong>
+              <br />
+              Your information is only shown after you sign in.
+            </p>
           </div>
         </div>
 
         <div className="rounded-3xl border border-[#e2e8e1] bg-white p-6 shadow-[0_24px_70px_rgba(47,78,66,.10)] sm:p-9">
           <div className="flex items-center gap-3">
-            <span className="grid size-11 place-items-center rounded-2xl bg-[#eaf4ed] text-[#39806d]"><HeartPulse size={22} /></span>
-            <p className="text-sm font-semibold uppercase tracking-[.12em] text-[#48816e]">Welcome back</p>
+            <span className="grid size-11 place-items-center rounded-2xl bg-[#eaf4ed] text-[#39806d]">
+              <HeartPulse size={22} />
+            </span>
+            <p className="text-sm font-semibold uppercase tracking-[.12em] text-[#48816e]">
+              Welcome back
+            </p>
           </div>
           <h2 className="mb-2 mt-6 text-3xl font-semibold tracking-[-.03em] text-[#243b34]">
             Sign in
           </h2>
           <p className="mb-6 text-base leading-7 text-[#687970]">
-            Use your patient ID, username, or email to continue.
+            Use your account ID, username, or email and password.
           </p>
           <LoginForm />
           <p className="mt-5 text-center text-sm text-[#687970]">
             New to Aayu Hub?{" "}
-            <Link className="font-semibold text-[#347361] hover:text-[#205b4d]" href="/signup">
+            <Link
+              className="font-semibold text-[#347361] hover:text-[#205b4d]"
+              href="/signup"
+            >
               Create an account
             </Link>
           </p>
           <p className="mt-5 rounded-xl bg-[#f5f8f4] p-4 text-sm leading-6 text-[#687970]">
-            Demo access: <strong className="font-semibold text-[#405d4e]">AAYU-1001</strong> / <strong className="font-semibold text-[#405d4e]">Patient@123</strong>
+            Demo access:{" "}
+            <strong className="font-semibold text-[#405d4e]">AAYU-1001</strong>{" "}
+            /{" "}
+            <strong className="font-semibold text-[#405d4e]">
+              Patient@123
+            </strong>
+          </p>
+          <p className="mt-3 text-center text-sm text-[#687970]">
+            Admin sign-in: use <strong>Aayu@Admin</strong> or <strong>Aayu</strong> and your configured admin password.
+          </p>
+          <p className="mt-3 text-center text-sm text-[#687970]">
+            Hospital staff?{" "}
+            <Link className="font-semibold text-[#347361] hover:text-[#205b4d]" href="/hospital-management/login">
+              Sign in to your hospital workspace
+            </Link>
           </p>
         </div>
       </section>

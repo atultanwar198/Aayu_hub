@@ -16,5 +16,11 @@
     "username": "patient032@gmail.com",
     "passwordHash": "scrypt$59b4802d2e84640cf6062e6151dddbfc$5759caae233ca0650647d2f67eec7ddaabfd92df3b537e538622fc3a2589676b2c3bc7639dc760b09bac7919bf66e5aba50ef2e62bd1481c792fee287340e745",
     "patientId": "PAT-5F7B89D0F2A342B4BC1399035C13AD5B"
+  },
+  {
+    "id": "AAYU-BB86AF9AD270452892800874B4B592EE",
+    "username": "atul@gmail.com",
+    "passwordHash": "scrypt$28e06f163bcd18b1e30ad0777ece99f9$cb5a18b7e8444f7b607d512eb981d70f9da336eebbf8b55f1fa0f0c2c1d8eddb11ac17860d6172899dd35438c3001cfdd5675240a03c4655c37a2b8df46edcec",
+    "patientId": "PAT-BB86AF9AD270452892800874B4B592EE"
   }
 ]
