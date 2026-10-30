@@ -1,35 +1,73 @@
 {
   "pages": {
+    "/_not-found/page": [
+      "static/chunks/webpack-9d795f9e26b86992.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-b1e2483a7e02feee.js",
+      "static/chunks/main-app-03f50fbbc36afa9e.js",
+      "static/chunks/app/_not-found/page-44907086073a8c13.js"
+    ],
     "/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
-    ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
-    ],
-    "/login/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/login/page.js"
+      "static/chunks/webpack-9d795f9e26b86992.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-b1e2483a7e02feee.js",
+      "static/chunks/main-app-03f50fbbc36afa9e.js",
+      "static/css/4f546bd8fc7617a0.css",
+      "static/chunks/app/layout-669088f9c79b2714.js"
     ],
     "/api/auth/login/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/auth/login/route.js"
-    ],
-    "/patients/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/patients/page.js"
+      "static/chunks/webpack-9d795f9e26b86992.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-b1e2483a7e02feee.js",
+      "static/chunks/main-app-03f50fbbc36afa9e.js",
+      "static/chunks/app/api/auth/login/route-368ac493472fdcee.js"
     ],
     "/api/auth/logout/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/auth/logout/route.js"
+      "static/chunks/webpack-9d795f9e26b86992.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-b1e2483a7e02feee.js",
+      "static/chunks/main-app-03f50fbbc36afa9e.js",
+      "static/chunks/app/api/auth/logout/route-368ac493472fdcee.js"
+    ],
+    "/login/page": [
+      "static/chunks/webpack-9d795f9e26b86992.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-b1e2483a7e02feee.js",
+      "static/chunks/main-app-03f50fbbc36afa9e.js",
+      "static/chunks/690-0809685d439d04f0.js",
+      "static/chunks/app/login/page-8b8613a82a121802.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-9d795f9e26b86992.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-b1e2483a7e02feee.js",
+      "static/chunks/main-app-03f50fbbc36afa9e.js",
+      "static/chunks/690-0809685d439d04f0.js",
+      "static/chunks/app/page-2c00db88c33b1e4b.js"
+    ],
+    "/signup/page": [
+      "static/chunks/webpack-9d795f9e26b86992.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-b1e2483a7e02feee.js",
+      "static/chunks/main-app-03f50fbbc36afa9e.js",
+      "static/chunks/690-0809685d439d04f0.js",
+      "static/chunks/app/signup/page-5b008c3bbcd82974.js"
+    ],
+    "/patients/page": [
+      "static/chunks/webpack-9d795f9e26b86992.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-b1e2483a7e02feee.js",
+      "static/chunks/main-app-03f50fbbc36afa9e.js",
+      "static/chunks/690-0809685d439d04f0.js",
+      "static/chunks/app/patients/page-0c24b880a05a918f.js"
+    ],
+    "/chatbot/page": [
+      "static/chunks/webpack-9d795f9e26b86992.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-b1e2483a7e02feee.js",
+      "static/chunks/main-app-03f50fbbc36afa9e.js",
+      "static/chunks/690-0809685d439d04f0.js",
+      "static/chunks/app/chatbot/page-6a670cd911d1e015.js"
     ]
   }
 }

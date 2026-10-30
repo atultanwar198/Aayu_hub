@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Aayu Hub — Patient Portal",
-  description: "Secure access to your patient information.",
+  title: "Aayu Hub — A place to ask",
+  description:
+    "Ask health questions, explore helpful information, and prepare for a conversation with a healthcare professional.",
 };
 
 export default function RootLayout({
@@ -11,7 +12,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-[#0b1113] font-sans text-[#f4f0e8] antialiased">
+      <body className="min-h-screen bg-[#fbfaf7] font-sans text-[#243331] antialiased">
         {children}
       </body>
     </html>

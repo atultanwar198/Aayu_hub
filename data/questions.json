@@ -1,0 +1,102 @@
+[
+  {
+    "id": "emergency",
+    "category": "Urgent help",
+    "question": "What should I do if someone may be having a medical emergency?",
+    "answer": "If you think someone may be in immediate danger or have severe or sudden symptoms, contact your local emergency service now. Do not wait for an online response.",
+    "keywords": [
+      "medical emergency",
+      "emergency",
+      "chest pain",
+      "trouble breathing",
+      "difficulty breathing",
+      "can't breathe",
+      "cannot breathe",
+      "severe bleeding",
+      "unconscious",
+      "overdose",
+      "stroke",
+      "suicidal"
+    ]
+  },
+  {
+    "id": "appointment",
+    "category": "Preparing for a visit",
+    "question": "How can I prepare for a doctor’s appointment?",
+    "answer": "Write down what you would like to discuss, when it started, how it affects you, and any questions you have. Bring an up-to-date list of medicines and allergies. A healthcare professional can help decide what information matters for your situation.",
+    "keywords": [
+      "appointment",
+      "doctor",
+      "clinician",
+      "healthcare professional",
+      "prepare for a visit",
+      "doctor visit",
+      "questions to ask",
+      "what should i tell"
+    ]
+  },
+  {
+    "id": "symptoms",
+    "category": "Symptoms & concerns",
+    "question": "What details should I note about a symptom?",
+    "answer": "You may find it useful to note when it began, how often it happens, what it feels like, what seems to change it, and how it affects your daily activities. Share these notes with a healthcare professional; this chatbot cannot assess or diagnose symptoms.",
+    "keywords": [
+      "symptom",
+      "headache",
+      "fever",
+      "pain",
+      "cough",
+      "dizzy",
+      "nausea",
+      "symptoms started",
+      "track a symptom",
+      "track symptoms"
+    ]
+  },
+  {
+    "id": "medication",
+    "category": "Medicines",
+    "question": "Where can I ask about a medicine or side effect?",
+    "answer": "For advice about a specific medicine, dose, or possible side effect, contact the clinician who prescribed it or a pharmacist. Do not start, stop, or change a prescribed medicine based only on chatbot information.",
+    "keywords": [
+      "medicine",
+      "medication",
+      "side effect",
+      "side effects",
+      "dose",
+      "dosage",
+      "prescription",
+      "pharmacist"
+    ]
+  },
+  {
+    "id": "records",
+    "category": "Patient portal",
+    "question": "How do I view my patient information?",
+    "answer": "Use the Patient portal link and sign in with your patient ID or username and password. If you cannot sign in or your information looks incorrect, contact your care provider or portal administrator.",
+    "keywords": [
+      "patient information",
+      "patient record",
+      "patient records",
+      "patient portal",
+      "sign in",
+      "login",
+      "health records"
+    ]
+  },
+  {
+    "id": "privacy",
+    "category": "Privacy",
+    "question": "Should I share personal details in the chatbot?",
+    "answer": "Please do not enter identifying or sensitive information here, such as your full name, address, passwords, or detailed medical records. This demo chatbot only matches your message to prepared questions and does not provide private medical care.",
+    "keywords": [
+      "privacy",
+      "private",
+      "personal details",
+      "personal information",
+      "sensitive information",
+      "is this secure",
+      "share my information"
+    ]
+  }
+]

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { LogOut } from "lucide-react";
 
 export default function LogoutButton() {
   const router = useRouter();
@@ -25,14 +26,14 @@ export default function LogoutButton() {
   return (
     <div className="flex items-center gap-[10px]">
       <button
-        className="border border-white/20 bg-transparent px-[14px] py-[9px] text-[11px] text-[#e1e3dc] transition-colors hover:border-[#d7a66e]"
+        className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-[#d6dfd8] bg-white px-4 text-sm font-medium text-[#40564c] transition-colors hover:border-[#9dbdac] hover:bg-[#f5f8f4]"
         onClick={logout}
         type="button"
       >
-        Sign out
+        <LogOut size={16} /> Sign out
       </button>
       {error && (
-        <span className="text-[11px] text-[#f0a39a]" role="alert">
+        <span         className="text-sm text-[#b42318]" role="alert">
           {error}
         </span>
       )}
