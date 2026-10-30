@@ -567,15 +567,15 @@ video {
 .top-12{
   top: 3rem;
 }
+.-bottom-4{
+  bottom: -1rem;
+}
+.-bottom-9{
+  bottom: -2.25rem;
+}
 .z-20{
   z-index: 20;
 }
-<<<<<<< HEAD
-=======
-.m-0{
-  margin: 0px;
-}
->>>>>>> 4d2ef94d2cd844b054e009a6b61f9f25d0b40646
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
@@ -604,12 +604,6 @@ video {
 .mb-7{
   margin-bottom: 1.75rem;
 }
-<<<<<<< HEAD
-.mb-8{
-  margin-bottom: 2rem;
-}
-=======
->>>>>>> 4d2ef94d2cd844b054e009a6b61f9f25d0b40646
 .ml-2{
   margin-left: 0.5rem;
 }
@@ -725,12 +719,6 @@ video {
 .min-h-\[76px\]{
   min-height: 76px;
 }
-<<<<<<< HEAD
-.min-h-\[78px\]{
-  min-height: 78px;
-}
-=======
->>>>>>> 4d2ef94d2cd844b054e009a6b61f9f25d0b40646
 .min-h-\[calc\(100vh-150px\)\]{
   min-height: calc(100vh - 150px);
 }
@@ -843,8 +831,6 @@ video {
 .gap-\[10px\]{
   gap: 10px;
 }
-<<<<<<< HEAD
-=======
 .gap-x-5{
   -moz-column-gap: 1.25rem;
        column-gap: 1.25rem;
@@ -852,7 +838,6 @@ video {
 .gap-y-2{
   row-gap: 0.5rem;
 }
->>>>>>> 4d2ef94d2cd844b054e009a6b61f9f25d0b40646
 .space-y-4 > :not([hidden]) ~ :not([hidden]){
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
@@ -969,12 +954,6 @@ video {
   --tw-border-opacity: 1;
   border-color: rgb(229 233 227 / var(--tw-border-opacity, 1));
 }
-<<<<<<< HEAD
-.border-\[\#e5e9e3\]\/80{
-  border-color: rgb(229 233 227 / 0.8);
-}
-=======
->>>>>>> 4d2ef94d2cd844b054e009a6b61f9f25d0b40646
 .border-\[\#e5eae4\]{
   --tw-border-opacity: 1;
   border-color: rgb(229 234 228 / var(--tw-border-opacity, 1));
@@ -1007,13 +986,6 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(92 166 122 / var(--tw-bg-opacity, 1));
 }
-<<<<<<< HEAD
-=======
-.bg-\[\#dff0e4\]{
-  --tw-bg-opacity: 1;
-  background-color: rgb(223 240 228 / var(--tw-bg-opacity, 1));
-}
->>>>>>> 4d2ef94d2cd844b054e009a6b61f9f25d0b40646
 .bg-\[\#e5f1e8\]{
   --tw-bg-opacity: 1;
   background-color: rgb(229 241 232 / var(--tw-bg-opacity, 1));
@@ -1226,24 +1198,14 @@ video {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-<<<<<<< HEAD
-.py-5{
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-=======
->>>>>>> 4d2ef94d2cd844b054e009a6b61f9f25d0b40646
 .py-6{
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
-<<<<<<< HEAD
-=======
 .py-7{
   padding-top: 1.75rem;
   padding-bottom: 1.75rem;
 }
->>>>>>> 4d2ef94d2cd844b054e009a6b61f9f25d0b40646
 .py-8{
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -1816,13 +1778,6 @@ video {
     align-items: flex-end;
   }
 
-<<<<<<< HEAD
-  .sm\:justify-between{
-    justify-content: space-between;
-  }
-
-=======
->>>>>>> 4d2ef94d2cd844b054e009a6b61f9f25d0b40646
   .sm\:gap-3{
     gap: 0.75rem;
   }

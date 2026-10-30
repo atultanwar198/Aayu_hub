@@ -2,6 +2,7 @@ import { Sparkles } from "lucide-react";
 import SignupForm from "./signup-form";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
+import Link from "next/link";
 
 export default function Signup() {
   return (

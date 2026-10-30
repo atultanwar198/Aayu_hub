@@ -26,13 +26,13 @@ const topics = [
   },
   {
     icon: Moon,
-    title: "Sleep & wellbeing",
-    description: "Explore everyday questions about rest, stress, and healthy routines.",
+    title: "Nearest Hospital",
+    description: "I want to know my nearest Hospital.",
   },
   {
     icon: ClipboardList,
-    title: "Preparing for a visit",
-    description: "Organize your questions and details before talking with a clinician.",
+    title: "Find a Specialist",
+    description: "I need help in choosing a splecialist.",
   },
   {
     icon: Brain,
@@ -76,7 +76,7 @@ export default function Home() {
               Your health questions deserve <span className="text-[#39806d]">a good place to begin.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-[#596b64] sm:text-xl">
-              Aayu Hub helps you ask questions about how you feel, understand health information, and prepare for a conversation with a healthcare professional.
+              Aayu Hub helps you ask questions about how you feel, understand health information, and prepare for a conversation with a healthcare professional AI.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link className="inline-flex min-h-14 items-center justify-center gap-3 rounded-xl bg-[#286d5c] px-6 text-base font-semibold text-white shadow-md shadow-[#286d5c]/15 transition hover:-translate-y-0.5 hover:bg-[#205b4d] focus:outline-none focus:ring-2 focus:ring-[#286d5c] focus:ring-offset-2" href="/chatbot">
@@ -107,7 +107,7 @@ export default function Home() {
               <div className="mt-8 rounded-2xl bg-[#f5f8f4] p-5 sm:p-6">
                 <p className="text-xs font-semibold uppercase tracking-[.13em] text-[#77877e]">You might ask</p>
                 <p className="mt-4 text-xl font-medium leading-8 text-[#344b42] sm:text-2xl">
-                  “What details should I write down before I talk to my doctor?”
+                  “I've been having a headache for two days. What should I do?”
                 </p>
                 <div className="mt-6 flex items-center gap-2 text-sm text-[#648071]">
                   <Check size={17} /> A simple way to get prepared
@@ -117,7 +117,7 @@ export default function Home() {
                 Aayu Hub can help you organize your thoughts. A healthcare professional can give advice for your personal situation.
               </p>
             </div>
-            <div className="absolute -bottom-5 -right-3 flex items-center gap-3 rounded-2xl border border-[#e5e9e1] bg-white px-4 py-3 shadow-lg sm:-right-6">
+            <div className="absolute -bottom-9 -right-3 flex items-center gap-3 rounded-2xl border border-[#e5e9e1] bg-white px-4 py-3 shadow-lg sm:-right-6">
               <span className="grid size-10 place-items-center rounded-full bg-[#fbf1e1] text-[#b77d31]"><Heart size={20} /></span>
               <span className="text-sm font-semibold text-[#465d52]">Care starts with a question</span>
             </div>

@@ -2,6 +2,7 @@ import { HeartPulse, ShieldCheck } from "lucide-react";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
 import LoginForm from "./login-form";
+import Link from "next/link";
 
 export default function LoginPage() {
   return (
