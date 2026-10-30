@@ -1,29 +1,12 @@
-import Link from "next/link";
-import {
-  ArrowLeft,
-  HeartPulse,
-  MessageCircleHeart,
-  ShieldAlert,
-  ShieldCheck,
-} from "lucide-react";
+import { MessageCircleHeart, ShieldAlert, ShieldCheck } from "lucide-react";
+import SiteNav from "@/components/site-nav";
+import SiteFooter from "@/components/site-footer";
 import Chatbot from "./chatbot";
 
 export default function ChatbotPage() {
   return (
     <main className="min-h-screen bg-[radial-gradient(ellipse_at_50%_0%,#eaf4ed_0%,#f7f9f6_36rem,#f7f9f6_100%)] text-[#243b34]">
-      <header className="border-b border-[#e5e9e3]/80 bg-white/90 backdrop-blur">
-        <div className="mx-auto flex min-h-[76px] max-w-6xl items-center justify-between px-5 sm:px-8">
-          <Link className="inline-flex items-center gap-3 text-lg font-bold tracking-[-.04em] text-[#183d38]" href="/">
-            <span className="grid size-10 place-items-center rounded-xl bg-[#e6f1e9] text-[#357465] shadow-sm" aria-hidden="true">
-              <HeartPulse size={23} />
-            </span>
-            Aayu<span className="-ml-3 text-[#4c8778]">Hub</span>
-          </Link>
-          <Link className="inline-flex min-h-10 items-center gap-2 rounded-xl px-3 text-sm font-medium text-[#52645e] transition hover:bg-[#f2f7f3] hover:text-[#287360]" href="/">
-            <ArrowLeft size={17} /> Back to home
-          </Link>
-        </div>
-      </header>
+      <SiteNav variant="back" />
 
       <section className="mx-auto max-w-5xl px-4 py-8 sm:px-8 sm:py-12">
         <div className="mb-7 flex flex-col justify-between gap-5 sm:mb-8 sm:flex-row sm:items-end">
@@ -51,6 +34,7 @@ export default function ChatbotPage() {
           </p>
         </div>
       </section>
+      <SiteFooter note="Aayu Hub’s assistant uses prepared answers for general information only. It cannot diagnose or provide emergency care." />
     </main>
   );
 }

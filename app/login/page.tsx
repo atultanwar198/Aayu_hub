@@ -1,17 +1,12 @@
-import Link from "next/link";
-import { ArrowRight, HeartPulse, ShieldCheck } from "lucide-react";
+import { HeartPulse, ShieldCheck } from "lucide-react";
+import SiteNav from "@/components/site-nav";
+import SiteFooter from "@/components/site-footer";
 import LoginForm from "./login-form";
 
 export default function LoginPage() {
   return (
     <main className="min-h-screen bg-[radial-gradient(ellipse_at_80%_15%,#e6f1e9_0%,#fbfaf7_48%,#f8f6f0_100%)] px-5 sm:px-8">
-      <header className="mx-auto flex min-h-[78px] max-w-6xl items-center justify-between border-b border-[#e5e9e3]">
-        <Link className="inline-flex items-center gap-3 text-lg font-bold tracking-[-.04em] text-[#183d38]" href="/">
-          <span className="grid size-10 place-items-center rounded-xl bg-[#e6f1e9] text-[#357465]" aria-hidden="true"><HeartPulse size={23} /></span>
-          Aayu<span className="-ml-3 text-[#4c8778]">Hub</span>
-        </Link>
-        <Link className="text-sm font-medium text-[#52645e] transition hover:text-[#287360]" href="/">Back to home</Link>
-      </header>
+      <SiteNav variant="back" />
 
       <section className="mx-auto grid min-h-[calc(100vh-150px)] max-w-5xl items-center gap-10 py-12 md:grid-cols-[1fr_minmax(320px,430px)] md:gap-16 md:py-16">
         <div className="max-w-xl">
@@ -44,11 +39,7 @@ export default function LoginPage() {
         </div>
       </section>
 
-      <footer className="mx-auto flex max-w-6xl flex-col gap-3 border-t border-[#e5e9e3] py-5 text-sm text-[#738078] sm:flex-row sm:justify-between">
-        <span className="inline-flex items-center gap-2"><HeartPulse size={16} /> Aayu Hub · Patient portal</span>
-        <span>Demo only — do not enter real health information.</span>
-        <Link className="inline-flex items-center gap-1 font-medium text-[#347361] hover:text-[#205b4d]" href="/">Learn about Aayu Hub <ArrowRight size={15} /></Link>
-      </footer>
+      <SiteFooter note="Demo only — do not enter real health information. Aayu Hub does not provide medical diagnosis or emergency care." />
     </main>
   );
 }

@@ -1,7 +1,5 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import {
-  ArrowLeft,
   CalendarDays,
   HeartPulse,
   Phone,
@@ -11,6 +9,8 @@ import {
 } from "lucide-react";
 import { getCurrentPatient } from "@/lib/auth";
 import LogoutButton from "./logout-button";
+import SiteNav from "@/components/site-nav";
+import SiteFooter from "@/components/site-footer";
 
 export default async function PatientPage() {
   const patient = await getCurrentPatient();
@@ -18,20 +18,11 @@ export default async function PatientPage() {
 
   return (
     <main className="min-h-screen bg-[#f7f9f6] text-[#243b34]">
-      <header className="border-b border-[#e5e9e3] bg-white">
-        <div className="mx-auto flex min-h-[76px] max-w-6xl items-center justify-between px-5 sm:px-8">
-          <Link className="inline-flex items-center gap-3 text-lg font-bold tracking-[-.04em] text-[#183d38]" href="/">
-            <span className="grid size-10 place-items-center rounded-xl bg-[#e6f1e9] text-[#357465]" aria-hidden="true"><HeartPulse size={23} /></span>
-            Aayu<span className="-ml-3 text-[#4c8778]">Hub</span>
-          </Link>
-          <LogoutButton />
-        </div>
-      </header>
+      <SiteNav variant="back" backLabel="Sign out">
+        <LogoutButton />
+      </SiteNav>
 
       <section className="mx-auto max-w-6xl px-5 py-10 sm:px-8 sm:py-14">
-        <Link className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-[#526b5f] hover:text-[#286d5c]" href="/">
-          <ArrowLeft size={17} /> Back to Aayu Hub
-        </Link>
         <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
           <div>
             <p className="text-sm font-bold uppercase tracking-[.13em] text-[#48816e]">Patient overview</p>
@@ -59,6 +50,7 @@ export default async function PatientPage() {
             <p className="mt-2 text-lg font-semibold text-[#2c433a]">{patient.bloodType}</p>
           </article>
         </section>
+        <SiteFooter note="Demo patient record only. Do not enter real health information. This portal is not for medical advice or emergencies." />
 
         <section className="mt-4 grid gap-4 md:grid-cols-2" aria-label="Health information">
           <article className="rounded-2xl border border-[#e5eae4] bg-white p-6 shadow-sm">
