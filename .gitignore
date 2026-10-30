@@ -9,3 +9,7 @@ backend/.env
 # Python virtual environment
 venv/
 .venv/
+
+.next/
+node_modules/
+out/
