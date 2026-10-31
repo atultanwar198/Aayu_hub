@@ -82,13 +82,21 @@ If the context is insufficient, say so.
                 },
             ],
             temperature=0.2,
-            max_tokens=600,
+            max_tokens=1000,
         )
 
-        answer = response.choices[0].message.content
+        choice = response.choices[0]
+
+        answer = choice.message.content
 
         if not answer:
             raise RuntimeError("The model returned an empty answer.")
+
+        if choice.finish_reason == "length":
+            print(
+                "warning : The model reached its output token limit."
+                "The answer may be incomplete." 
+            )
 
         return answer.strip()
 

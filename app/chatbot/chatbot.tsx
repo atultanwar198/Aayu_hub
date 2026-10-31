@@ -5,8 +5,10 @@ import {
   Bot,
   Check,
   ChevronDown,
+  HeartPulse,
   RotateCcw,
   Send,
+  ShieldCheck,
   Sparkles,
   UserRound,
 } from "lucide-react";
@@ -16,22 +18,18 @@ type Message = {
   id: number;
   role: "assistant" | "user";
   text: string;
+  pending?: boolean;
 };
+
 type ChatApiResponse = {
   question: string;
   answer: string;
-  sources: {
-    filename: string;
-    department: string;
-    distance: number;
-  }[];
+  sources: { filename: string; department: string; distance: number }[];
 };
 
 const starterQuestions = questionData.filter((question) => question.id !== "emergency");
 const welcomeMessage =
-  "Hi, I’m here to help you find information in the Aayu Hub guide. What would you like to know?";
-
-
+  "Hi, I’m your Aayu Hub guide. I can help you find information about care, appointments, and getting support. What would you like to know?";
 
 export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([
@@ -40,89 +38,71 @@ export default function Chatbot() {
   const [input, setInput] = useState("");
   const [messageId, setMessageId] = useState(1);
   const [expandedQuestions, setExpandedQuestions] = useState(false);
+  const [isSending, setIsSending] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [messages]);
 
   async function askQuestion(question: string) {
-  const trimmedQuestion = question.trim();
+    const trimmedQuestion = question.trim();
+    if (!trimmedQuestion || isSending) return;
 
-  if (!trimmedQuestion) return;
+    const userMessageId = messageId;
+    const assistantMessageId = messageId + 1;
+    setMessages((current) => [
+      ...current,
+      { id: userMessageId, role: "user", text: trimmedQuestion },
+      { id: assistantMessageId, role: "assistant", text: "", pending: true },
+    ]);
+    setMessageId((current) => current + 2);
+    setInput("");
+    setIsSending(true);
 
-  const userMessageId = messageId;
-  const assistantMessageId = messageId + 1;
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000";
+      const response = await fetch(`${apiUrl}/api/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: trimmedQuestion }),
+      });
 
-  setMessages((currentMessages) => [
-    ...currentMessages,
-    {
-      id: userMessageId,
-      role: "user",
-      text: trimmedQuestion,
-    },
-    {
-      id: assistantMessageId,
-      role: "assistant",
-      text: "Searching the Aayu Hub medical information guide...",
-    },
-  ]);
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        throw new Error(errorData?.detail || "The chatbot API request failed.");
+      }
 
-  setMessageId((currentId) => currentId + 2);
-  setInput("");
-
-  try {
-    const apiUrl =
-      process.env.NEXT_PUBLIC_API_URL ??
-      "http://127.0.0.1:8000";
-
-    const response = await fetch(`${apiUrl}/api/chat`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        question: trimmedQuestion,
-      }),
-    });
-
-   if (!response.ok) {
-  const errorData = await response.json().catch(() => null);
-
-  throw new Error(
-    errorData?.detail || "The chatbot API request failed."
-  );
-}
-
-const data: ChatApiResponse = await response.json();
-
-const reply =
-  data.answer?.trim() ||
-  "I couldn't generate an answer right now. Please try again, or consult a qualified healthcare professional.";
-
-  setMessages((currentMessages) =>
-    currentMessages.map((message) =>
-      message.id === assistantMessageId
-       ? { ...message, text: reply }
-       : message
-   )
-  );
-  } catch (error) {
-    console.error("Aayu Hub chatbot error:", error);
-
-    setMessages((currentMessages) =>
-      currentMessages.map((message) =>
-        message.id === assistantMessageId
-          ? {
-              ...message,
-              text:
-                "I'm unable to connect to the Aayu Hub service right now. Please try again in a moment.",
-            }
-          : message
-      )
-    );
+      const data: ChatApiResponse = await response.json();
+      const reply =
+        data.answer?.trim() ||
+        "I couldn’t find an answer just now. Please try asking another way, or contact your care team.";
+      setMessages((current) =>
+        current.map((message) =>
+          message.id === assistantMessageId
+            ? { ...message, text: reply, pending: false }
+            : message,
+        ),
+      );
+    } catch (error) {
+      console.error("Aayu Hub chatbot error:", error);
+      setMessages((current) =>
+        current.map((message) =>
+          message.id === assistantMessageId
+            ? {
+                ...message,
+                text: "I’m having trouble connecting right now. Please try again in a moment.",
+                pending: false,
+              }
+            : message,
+        ),
+      );
+    } finally {
+      setIsSending(false);
+      inputRef.current?.focus();
+    }
   }
-}
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -130,165 +110,135 @@ const reply =
   }
 
   function resetChat() {
+    if (isSending) return;
     setMessages([{ id: messageId, role: "assistant", text: welcomeMessage }]);
-    setMessageId((currentId) => currentId + 1);
+    setMessageId((current) => current + 1);
     setInput("");
     setExpandedQuestions(false);
+    inputRef.current?.focus();
   }
 
   return (
     <section
-      className="overflow-hidden rounded-[26px] border border-[#dfe8df] bg-white shadow-[0_24px_70px_rgba(47,78,66,.11)]"
+      className="mx-auto grid max-w-6xl overflow-hidden rounded-[28px] border border-[#e3e9df] bg-white shadow-[0_26px_80px_rgba(39,72,56,.10)] lg:grid-cols-[minmax(0,1fr)_280px]"
       aria-label="Aayu Hub question chatbot"
     >
-      <div className="h-1 bg-gradient-~to-r from-[#9ac7a8] via-[#3f9278] to-[#e6c18a]" />
-      <div className="flex items-center justify-between border-b border-[#e8ede7] px-4 py-4 sm:px-6">
-        <div className="flex items-center gap-3">
-          <span className="relative grid size-12 place-items-center rounded-2xl bg-gradient-to-br from-[#e7f3e9] to-[#dceee4] text-[#347361] shadow-sm">
-            <Bot size={23} />
-            <span className="absolute -bottom-0.5 -right-0.5 size-3 rounded-full border-2 border-white bg-[#5ca67a]" />
-          </span>
-          <div>
-            <h2 className="font-semibold text-[#2c433a]">Aayu Hub assistant</h2>
-            <p className="mt-0.5 flex items-center gap-1.5 text-sm text-[#738078]">
-              <span className="size-1.5 rounded-full bg-[#5ca67a]" />
-              Guide ready to help
-            </p>
-          </div>
-        </div>
-        <button
-          className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-[#e5eae4] px-3 text-sm font-medium text-[#526b5f] transition hover:border-[#c6dccb] hover:bg-[#f5f9f5] hover:text-[#286d5c] focus:outline-none focus:ring-2 focus:ring-[#39806d]"
-          onClick={resetChat}
-          type="button"
-          aria-label="Start a new chat"
-        >
-          <RotateCcw size={16} />
-          <span className="hidden sm:inline">New chat</span>
-        </button>
-      </div>
-
-      <div
-        className="max-h-[min(56vh,560px)] min-h-[340px] space-y-6 overflow-y-auto bg-[linear-gradient(180deg,#f8fbf8_0%,#f4f8f4_100%)] px-4 py-6 sm:min-h-[390px] sm:px-7 sm:py-8"
-        aria-live="polite"
-      >
-        {messages.map((message) => (
-          <div
-            className={`flex items-end gap-2.5 sm:gap-3 ${
-              message.role === "user" ? "justify-end" : "justify-start"
-            }`}
-            key={message.id}
-          >
-            {message.role === "assistant" && (
-              <span
-                className="grid size-8 shrink-0 place-items-center rounded-xl border border-[#dce9df] bg-white text-[#39806d] shadow-sm sm:size-9"
-                aria-hidden="true"
-              >
-                <Bot size={18} />
-              </span>
-            )}
-            <div
-              className={`flex max-w-[88%] flex-col ${
-                message.role === "user" ? "items-end" : "items-start"
-              }`}
-            >
-              <span className="mb-1.5 px-1 text-xs font-semibold text-[#7a8a80]">
-                {message.role === "user" ? "You" : "Aayu assistant"}
-              </span>
-              <p
-                className={`whitespace-pre-wrap rounded-2xl px-4 py-3.5 text-[15px] leading-7 shadow-sm sm:px-5 sm:text-base ${
-                  message.role === "user"
-                    ? "rounded-br-md bg-[#286d5c] text-white"
-                    : "rounded-bl-md border border-[#e3eae3] bg-white text-[#40564c]"
-                }`}
-              >
-                {message.text}
+      <div className="flex min-w-0 flex-col">
+        <header className="flex items-center justify-between border-b border-[#edf0e9] px-5 py-4 sm:px-7 sm:py-5">
+          <div className="flex items-center gap-3.5">
+            <span className="relative grid size-12 place-items-center rounded-[18px] bg-[#eaf3e9] text-[#39765f]">
+              <Bot size={23} strokeWidth={1.8} />
+              <span className="absolute -bottom-0.5 -right-0.5 size-3 rounded-full border-2 border-white bg-[#65a47a]" />
+            </span>
+            <div>
+              <h2 className="font-semibold tracking-[-.02em] text-[#263e32]">Aayu assistant</h2>
+              <p className="mt-1 flex items-center gap-1.5 text-xs text-[#77847a]">
+                <span className="size-1.5 rounded-full bg-[#65a47a]" /> Here to help you find your way
               </p>
+            </div>
+          </div>
+          <button
+            className="inline-flex min-h-10 items-center gap-2 rounded-xl px-3 text-sm font-medium text-[#66766a] transition hover:bg-[#f4f7f1] hover:text-[#286d5c] focus:outline-none focus:ring-2 focus:ring-[#39806d] disabled:cursor-not-allowed disabled:opacity-50"
+            onClick={resetChat}
+            type="button"
+            aria-label="Start a new chat"
+            disabled={isSending}
+          >
+            <RotateCcw size={15} /> <span className="hidden sm:inline">New chat</span>
+          </button>
+        </header>
+
+        <div
+          className="min-h-[360px] flex-1 space-y-7 overflow-y-auto bg-[radial-gradient(ellipse_at_top,#f6faf4_0%,#fbfcf9_58%)] px-4 py-7 sm:min-h-[430px] sm:px-8 sm:py-9"
+          aria-live="polite"
+          aria-relevant="additions text"
+        >
+          <div className="mx-auto flex max-w-xl items-center justify-center gap-2 text-[11px] font-medium uppercase tracking-[.13em] text-[#9aa59a]">
+            <span className="h-px flex-1 bg-[#e7ece4]" /> Aayu Hub guide <span className="h-px flex-1 bg-[#e7ece4]" />
+          </div>
+          {messages.map((message) => (
+            <div
+              className={`mx-auto flex max-w-2xl items-end gap-3 ${message.role === "user" ? "justify-end" : "justify-start"}`}
+              key={message.id}
+            >
               {message.role === "assistant" && (
-                <span className="mt-2 inline-flex items-center gap-1.5 px-1 text-xs text-[#87948c]">
-                  <Check size={13} className="text-[#4d8975]" />
-                  From the Aayu Hub guide
+                <span className="grid size-8 shrink-0 place-items-center rounded-xl border border-[#e3ebe0] bg-white text-[#56836b] shadow-[0_2px_8px_rgba(34,63,46,.05)]" aria-hidden="true">
+                  <Bot size={17} />
                 </span>
               )}
+              <div className={`flex max-w-[88%] flex-col ${message.role === "user" ? "items-end" : "items-start"}`}>
+                <span className="mb-1.5 px-1 text-[11px] font-semibold tracking-wide text-[#89958a]">
+                  {message.role === "user" ? "YOU" : "AAYU ASSISTANT"}
+                </span>
+                {message.pending ? (
+                  <div className="flex items-center gap-2.5 rounded-2xl rounded-bl-md border border-[#e4ebe2] bg-white px-4 py-3.5 text-sm text-[#65766a] shadow-[0_3px_12px_rgba(34,63,46,.04)]" role="status">
+                    <span className="flex gap-1"><i className="size-1.5 animate-bounce rounded-full bg-[#78a384] [animation-delay:-.2s]" /><i className="size-1.5 animate-bounce rounded-full bg-[#78a384] [animation-delay:-.1s]" /><i className="size-1.5 animate-bounce rounded-full bg-[#78a384]" /></span>
+                    Looking through the guide…
+                  </div>
+                ) : (
+                  <p className={`whitespace-pre-wrap rounded-2xl px-4 py-3.5 text-[15px] leading-7 sm:px-5 ${message.role === "user" ? "rounded-br-md bg-[#286d5c] text-white shadow-[0_5px_16px_rgba(40,109,92,.16)]" : "rounded-bl-md border border-[#e4ebe2] bg-white text-[#41574a] shadow-[0_3px_12px_rgba(34,63,46,.04)]"}`}>
+                    {message.text}
+                  </p>
+                )}
+                {message.role === "assistant" && !message.pending && (
+                  <span className="mt-2 inline-flex items-center gap-1.5 px-1 text-[11px] text-[#8b988d]"><Check size={12} className="text-[#57916d]" /> Aayu Hub guide</span>
+                )}
+              </div>
+              {message.role === "user" && (
+                <span className="grid size-8 shrink-0 place-items-center rounded-xl bg-[#edf0e9] text-[#69796d]" aria-hidden="true"><UserRound size={16} /></span>
+              )}
             </div>
-            {message.role === "user" && (
-              <span
-                className="grid size-8 shrink-0 place-items-center rounded-xl bg-[#e7eee8] text-[#60746a] sm:size-9"
-                aria-hidden="true"
-              >
-                <UserRound size={18} />
-              </span>
-            )}
-          </div>
-        ))}
-        <div ref={bottomRef} />
-      </div>
-
-      <div className="border-t border-[#e8ede7] bg-white p-4 sm:p-6">
-        <div className="mb-4">
-          <div className="mb-2.5 flex items-center justify-between gap-2">
-            <p className="inline-flex items-center gap-2 text-sm font-semibold text-[#526b5f]">
-              <Sparkles size={16} className="text-[#6b9b78]" />
-              {messages.length > 1 ? "Keep exploring" : "Try asking"}
-            </p>
-            <button
-              className="inline-flex items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-[#52806b] transition hover:bg-[#f1f7f2] focus:outline-none focus:ring-2 focus:ring-[#39806d]"
-              onClick={() => setExpandedQuestions((expanded) => !expanded)}
-              type="button"
-              aria-expanded={expandedQuestions}
-            >
-              {expandedQuestions ? "Fewer" : "More"}
-              <ChevronDown
-                className={`size-4 transition-transform ${
-                  expandedQuestions ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {(expandedQuestions
-              ? starterQuestions
-              : starterQuestions.slice(0, 3)
-            ).map((question) => (
-              <button
-                className="rounded-xl border border-[#dce9df] bg-[#fbfdfb] px-3 py-2 text-left text-sm leading-5 text-[#386a54] transition hover:border-[#9dbdac] hover:bg-[#f2f7f3] focus:outline-none focus:ring-2 focus:ring-[#39806d]"
-                key={question.id}
-                onClick={() => askQuestion(question.question)}
-                type="button"
-              >
-                {question.question}
-              </button>
-            ))}
-          </div>
+          ))}
+          <div ref={bottomRef} />
         </div>
 
-        <form
-          className="flex items-center gap-2 rounded-2xl border border-[#d6dfd8] bg-[#fbfdfb] p-1.5 pl-4 transition focus-within:border-[#78a88e] focus-within:ring-4 focus-within:ring-[#39806d]/10 sm:gap-3 sm:p-2 sm:pl-5"
-          onSubmit={handleSubmit}
-        >
-          <label className="sr-only" htmlFor="chat-question">
-            Ask a question
-          </label>
-          <input
-            className="min-w-0 flex-1 border-0 bg-transparent py-2.5 text-base text-[#263b33] outline-none placeholder:text-[#89968e]"
-            id="chat-question"
-            maxLength={500}
-            onChange={(event) => setInput(event.target.value)}
-            placeholder="Write your question here..."
-            value={input}
-          />
-          <button
-            className="grid size-11 shrink-0 place-items-center rounded-xl bg-[#286d5c] text-white transition hover:bg-[#205b4d] focus:outline-none focus:ring-2 focus:ring-[#286d5c] focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-[#9eb7aa] sm:size-12"
-            disabled={!input.trim()}
-            type="submit"
-            aria-label="Send question"
-          >
-            <Send size={19} />
-          </button>
-        </form>
-        <p className="mt-2 px-1 text-xs text-[#87948c]">
-          Please avoid sharing your name, passwords, or other private details.
-        </p>
+        <div className="border-t border-[#edf0e9] bg-white px-4 py-4 sm:px-7 sm:py-5">
+          <form className="mx-auto flex max-w-2xl items-center gap-2 rounded-[18px] border border-[#dce5dc] bg-[#fcfdfa] p-1.5 pl-4 transition focus-within:border-[#8bb49a] focus-within:ring-4 focus-within:ring-[#39806d]/10 sm:pl-5" onSubmit={handleSubmit}>
+            <label className="sr-only" htmlFor="chat-question">Ask a question</label>
+            <input
+              ref={inputRef}
+              className="min-w-0 flex-1 border-0 bg-transparent py-2.5 text-[15px] text-[#263b33] outline-none placeholder:text-[#9aa49b]"
+              id="chat-question"
+              maxLength={500}
+              onChange={(event) => setInput(event.target.value)}
+              placeholder="Ask about care, appointments, or support…"
+              value={input}
+              disabled={isSending}
+            />
+            <button className="grid size-11 shrink-0 place-items-center gap-1 rounded-[14px] bg-[#286d5c] text-white transition hover:bg-[#205b4d] focus:outline-none focus:ring-2 focus:ring-[#286d5c] focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-[#aabdb0]" disabled={!input.trim() || isSending} type="submit" aria-label="Send question">
+              <Send size={18} />
+            </button>
+          </form>
+          <p className="mx-auto mt-2.5 flex max-w-2xl items-center justify-center gap-1.5 text-center text-[11px] leading-5 text-[#89958b]"><ShieldCheck size={13} className="shrink-0" /> Avoid sharing personal details. For urgent medical help, contact emergency services.</p>
+        </div>
       </div>
+
+      <aside className="border-t border-[#edf0e9] bg-[#f7f9f4] px-5 py-5 lg:border-l lg:border-t-0 lg:px-5 lg:py-7">
+        <div className="flex items-start gap-3 lg:block">
+          <span className="grid size-10 shrink-0 place-items-center rounded-2xl bg-white text-[#67906e] shadow-sm lg:mb-5"><HeartPulse size={19} /></span>
+          <div>
+            <p className="text-sm font-semibold text-[#354d3d]">A good place to start</p>
+            <p className="mt-1 text-xs leading-5 text-[#7e897c]">Choose a question or ask in your own words.</p>
+          </div>
+        </div>
+        <div className="mt-5 flex items-center justify-between gap-2 lg:mt-7">
+          <p className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[.08em] text-[#738472]"><Sparkles size={14} className="text-[#86a777]" /> Suggested questions</p>
+          <button className="inline-flex items-center gap-1 rounded-lg p-1 text-xs font-medium text-[#64816b] hover:bg-white focus:outline-none focus:ring-2 focus:ring-[#39806d] lg:hidden" onClick={() => setExpandedQuestions((expanded) => !expanded)} type="button" aria-expanded={expandedQuestions}>
+            {expandedQuestions ? "Less" : "More"}<ChevronDown className={`size-3.5 transition-transform ${expandedQuestions ? "rotate-180" : ""}`} />
+          </button>
+        </div>
+        <div className={`mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-1 ${expandedQuestions ? "" : "max-sm:hidden"}`}>
+          {(expandedQuestions ? starterQuestions : starterQuestions.slice(0, 4)).map((question) => (
+            <button className="group flex min-h-12 items-center justify-between gap-3 rounded-xl border border-[#e6ebe1] bg-white px-3.5 py-2.5 text-left text-[13px] leading-5 text-[#4c6250] transition hover:border-[#b8cfb9] hover:bg-[#fbfdf9] hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-[#39806d] disabled:cursor-wait disabled:opacity-60" key={question.id} onClick={() => askQuestion(question.question)} type="button" disabled={isSending}>
+              <span>{question.question}</span><span className="text-lg leading-none text-[#9aae96] transition-transform group-hover:translate-x-0.5">›</span>
+            </button>
+          ))}
+        </div>
+        <div className="mt-6 hidden rounded-2xl border border-[#e5ebe0] bg-white/75 p-4 lg:block">
+          <p className="text-xs font-semibold text-[#536b57]">Need urgent help?</p>
+          <p className="mt-1.5 text-xs leading-5 text-[#7f8b7e]">This guide can’t assess emergencies. Please contact local emergency services or your care team.</p>
+        </div>
+      </aside>
     </section>
   );
 }

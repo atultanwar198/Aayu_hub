@@ -24,11 +24,19 @@ embeddings = HuggingFaceEmbeddings(
 )
 
 
+
 def retrieve_documents(question, top_k=3):
-    # Convert the question into an embedding
+    # Step 1: Convert the user's question into an embedding.
     query_vector = Vector(embeddings.embed_query(question))
 
-    # Connect to PostgreSQL
+    retrieved_documents = []
+    seen_chunks = set()
+
+    # Retrieve extra rows so duplicates don't consume all
+    # the available result slots.
+    search_limit = top_k * 5
+
+    # Step 2: Connect to PostgreSQL.
     with psycopg.connect(CONNECTION_STRING) as conn:
         register_vector(conn)
 
@@ -46,14 +54,23 @@ def retrieve_documents(question, top_k=3):
                 ORDER BY dc.embedding <=> %s
                 LIMIT %s;
                 """,
-                (query_vector, query_vector, top_k),
+                (query_vector, query_vector, search_limit),
             )
 
             results = cur.fetchall()
 
-    retrieved_documents = []
-
+    # Step 3: Remove duplicate chunks.
     for chunk_text, metadata, filename, distance in results:
+        chunk_key = (
+            filename,
+            " ".join(chunk_text.split()).casefold(),
+        )
+
+        if chunk_key in seen_chunks:
+            continue
+
+        seen_chunks.add(chunk_key)
+
         retrieved_documents.append(
             {
                 "text": chunk_text,
@@ -63,8 +80,10 @@ def retrieve_documents(question, top_k=3):
             }
         )
 
-    return retrieved_documents
+        if len(retrieved_documents) >= top_k:
+            break
 
+    return retrieved_documents
 
 if __name__ == "__main__":
     question = input("Enter your question: ")
