@@ -24,6 +24,8 @@ export default async function AppointmentsPage({
     ? params.specialty[0]
     : params.specialty;
   const specialties = [
+    "Emergency",
+    "General Medicine",
     ...new Set(hospitals.flatMap((hospital) => hospital.specialties)),
   ];
   const initialSpecialty =

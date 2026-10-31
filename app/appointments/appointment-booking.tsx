@@ -82,16 +82,19 @@ export default function AppointmentBooking({
 }) {
   const specialties = useMemo(
     () =>
-      [...new Set(hospitals.flatMap((hospital) => hospital.specialties))].sort(
+      ["Emergency", "General Medicine", ...new Set(hospitals.flatMap((hospital) => hospital.specialties))].sort(
         (left, right) => left.localeCompare(right),
       ),
     [hospitals],
   );
   const [appointments, setAppointments] = useState(initialAppointments);
+  const [appointmentNotes, setAppointmentNotes] = useState("");
   const [selectedHospitalId, setSelectedHospitalId] = useState(() => {
-    const initialMatch = hospitals.find((hospital) =>
-      hospitalHasSpecialty(hospital, initialSpecialty),
-    );
+    const initialMatch = initialSpecialty === "Emergency"
+      ? hospitals.find((hospital) => hospital.emergencyServices)
+      : initialSpecialty === "General Medicine"
+      ? hospitals.find((hospital) => hospital.specialties.length === 0)
+      : hospitals.find((hospital) => hospitalHasSpecialty(hospital, initialSpecialty));
     return initialMatch?.id ?? "";
   });
   const [selectedSpecialty, setSelectedSpecialty] = useState(initialSpecialty);
@@ -117,13 +120,29 @@ export default function AppointmentBooking({
   const [calculatingRoutes, setCalculatingRoutes] = useState(false);
 
   useEffect(() => {
+    try {
+      const draft = window.sessionStorage.getItem("aayu_appointment_notes");
+      if (draft) {
+        setAppointmentNotes(draft.slice(0, 500));
+        window.sessionStorage.removeItem("aayu_appointment_notes");
+      }
+    } catch {
+      // Session storage can be disabled; the form remains editable.
+    }
+  }, []);
+
+  useEffect(() => {
     const minimum = new Date(Date.now() + 5 * 60_000);
     const defaultDate = new Date();
-    defaultDate.setDate(defaultDate.getDate() + 1);
-    defaultDate.setHours(9, 0, 0, 0);
+    if (selectedSpecialty === "Emergency") {
+      defaultDate.setMinutes(defaultDate.getMinutes() + 10);
+    } else {
+      defaultDate.setDate(defaultDate.getDate() + 1);
+      defaultDate.setHours(9, 0, 0, 0);
+    }
     setMinimumDateTime(localDateTimeValue(minimum));
     setScheduledAt(localDateTimeValue(defaultDate));
-  }, []);
+  }, [selectedSpecialty]);
 
   useEffect(() => {
     let cancelled = false;
@@ -173,7 +192,11 @@ export default function AppointmentBooking({
 
   const eligibleHospitals = useMemo(
     () =>
-      selectedSpecialty
+      selectedSpecialty === "Emergency"
+        ? hospitals.filter((hospital) => hospital.emergencyServices)
+        : selectedSpecialty === "General Medicine"
+        ? hospitals.filter((hospital) => hospital.specialties.length === 0)
+        : selectedSpecialty
         ? hospitals.filter((hospital) =>
             hospitalHasSpecialty(hospital, selectedSpecialty),
           )
@@ -196,7 +219,7 @@ export default function AppointmentBooking({
   const mapRoute = selectedRoute ?? routes[0];
 
   useEffect(() => {
-    if (!origin || !selectedSpecialty) {
+    if (!origin || !selectedSpecialty || selectedSpecialty === "General Medicine" || selectedSpecialty === "Emergency") {
       setRoutes([]);
       setCalculatingRoutes(false);
       return;
@@ -268,7 +291,11 @@ export default function AppointmentBooking({
 
   function selectSpecialty(specialty: string) {
     setSelectedSpecialty(specialty);
-    const matchingHospitals = specialty
+    const matchingHospitals = specialty === "Emergency"
+      ? hospitals.filter((hospital) => hospital.emergencyServices)
+      : specialty === "General Medicine"
+      ? hospitals.filter((hospital) => hospital.specialties.length === 0)
+      : specialty
       ? hospitals.filter((hospital) =>
           hospitalHasSpecialty(hospital, specialty),
         )
@@ -322,6 +349,7 @@ export default function AppointmentBooking({
         "Appointment request sent. The hospital must confirm it with you.",
       );
       form.reset();
+      setAppointmentNotes("");
       setScheduledAt("");
     } catch {
       setBookingError("Could not reach the server. Please try again.");
@@ -464,6 +492,8 @@ export default function AppointmentBooking({
                 id="notes"
                 name="notes"
                 maxLength={500}
+                value={appointmentNotes}
+                onChange={(event) => setAppointmentNotes(event.target.value)}
                 placeholder="Add a brief scheduling note. Avoid sharing sensitive medical details."
               />
             </div>

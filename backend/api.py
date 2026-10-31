@@ -1,4 +1,5 @@
 import logging
+import re
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -103,40 +104,42 @@ USER'S ANSWERS:
 
 TASK:
 Use the retrieved medical knowledge to provide a cautious,
-evidence-based preliminary assessment.
+evidence-based preliminary symptom summary. The knowledge base
+may contain information about cardiology, dermatology,
+ophthalmology, orthopaedics, and other care areas.
 
-Include these sections:
+Return ONLY these three sections, in this order:
 
 1. SYMPTOM SUMMARY
-Summarize the symptoms and answers provided by the user.
+Briefly summarize the symptoms and answers. You may mention a
+possible disease or explanation only as an unconfirmed possibility
+and only when supported by retrieved information. Never diagnose.
 
-2. POSSIBLE EXPLANATIONS
-Explain plausible causes supported by the available evidence.
-Do not claim that a disease has been definitively diagnosed.
-Mention uncertainty and other possible causes when appropriate.
+2. RECOMMENDED DEPARTMENT
+Recommend Cardiology, Dermatology, Ophthalmology, Orthopaedics,
+or another department only when the symptoms and retrieved
+information reasonably support it. If the fit is unclear, the
+knowledge base has no relevant department, or evidence is
+insufficient, recommend starting at a general hospital or General
+Medicine for an in-person assessment. Do not invent hospital
+availability or claim that a department is present at a specific
+hospital.
 
-3. RECOMMENDED DEPARTMENT
-Suggest an appropriate medical department when the evidence
-supports a recommendation. If the information is insufficient,
-say that an in-person medical assessment is needed to determine
-the appropriate department.
+3. URGENCY RATING OUT OF 5
+Start this section with the numeric rating in the exact format
+`N/5` (for example, `4/5`). Give a preliminary urgency estimate
+from 1 to 5, explain briefly
+what the estimate reflects, and state an appropriate timeframe
+for professional care. This is not a validated clinical score
+and is not a measure or diagnosis of disease severity.
+If the estimate is 4 or 5, label it EMERGENCY and advise calling
+emergency services now to request an ambulance. Do not suggest
+driving oneself or waiting for a routine appointment.
 
-4. URGENCY RATING OUT OF 5
-Provide a preliminary urgency rating from 1 to 5, with:
-- The meaning of the rating.
-- The reasons for the rating.
-- The recommended timeframe for seeking care.
-
-This is an unvalidated preliminary triage estimate, not a
-clinically validated severity score. Do not treat the rating
-as a definitive measurement of disease severity.
-
-5. RECOMMENDED NEXT STEPS
-Provide appropriate, cautious next steps.
-
-6. WARNING SIGNS
-Explain which warning signs would require urgent or emergency
-medical attention.
+OPTIONAL SECTIONS:
+Only add RECOMMENDED NEXT STEPS, WARNING SIGNS, or POSSIBLE
+EXPLANATIONS if the user explicitly asks for that information in
+their answers. Otherwise omit those sections entirely.
 
 SAFETY RULES:
 - Do not present a possible condition as a confirmed diagnosis.
@@ -147,6 +150,8 @@ SAFETY RULES:
   medication doses.
 - Never allow a low urgency rating to override emergency
   warning signs.
+- If emergency warning signs are present, make immediate
+  emergency care the recommendation regardless of rating.
 - If the answers indicate a possible emergency, prioritize
   emergency care instead of routine advice.
 - Do not delay emergency guidance to ask more questions.
@@ -155,11 +160,20 @@ SAFETY RULES:
 
     try:
         result = ask_aayu(assessment_question)
+        assessment = result.get("answer", "")
+        rating_match = re.search(
+            r"\b([1-5])\s*(?:/|out of)\s*5\b",
+            assessment,
+            flags=re.IGNORECASE,
+        )
+        urgency_rating = int(rating_match.group(1)) if rating_match else None
 
         return {
             "status": "assessment_generated",
             "answers": answers,
-            "assessment": result.get("answer", ""),
+            "assessment": assessment,
+            "urgency_rating": urgency_rating,
+            "emergency_recommended": urgency_rating is not None and urgency_rating >= 4,
             "sources": result.get("sources", []),
         }
 

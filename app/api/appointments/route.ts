@@ -70,7 +70,13 @@ export async function POST(request: Request) {
     );
   }
 
-  if (!hospitalHasSpecialty(hospital, department)) {
+  const normalizedDepartment = department.toLowerCase();
+  const departmentIsAvailable = normalizedDepartment === "emergency"
+    ? hospital.emergencyServices
+    : normalizedDepartment === "general medicine"
+      ? hospital.specialties.length === 0
+      : hospitalHasSpecialty(hospital, department);
+  if (!departmentIsAvailable) {
     return NextResponse.json(
       {
         error:
@@ -89,7 +95,7 @@ export async function POST(request: Request) {
     clinician: "To be assigned by the hospital",
     scheduledAt: scheduledAt.toISOString(),
     status: "scheduled",
-    priority: "routine",
+    priority: normalizedDepartment === "emergency" ? "emergency" : "routine",
     notes,
   });
 
